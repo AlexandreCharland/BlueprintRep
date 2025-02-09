@@ -1,0 +1,31 @@
+mkdir -p ~/Desktop/Université/Session8/Projet/IFT3150
+cd ~/Desktop/Université/Session8/Projet/IFT3150
+
+# create BlueprintRep repo in github
+# clone it
+git clone git@github.com:AlexandreCharland/BlueprintRep.git
+
+# setup Python3.12 environnement for BlueprintRep
+python3.12 -m venv BlueprintRep
+. BlueprintRep/bin/activate
+pip install --upgrade pip
+
+
+# import graphviz librairy
+export GRAPHVIZ_DIR=$(brew --prefix graphviz)
+python3.12 -m pip install pygraphviz --config-settings=--global-option=build_ext --config-settings=--global-option="-I${GRAPHVIZ_DIR}/include" --config-settings=--global-option="-L${GRAPHVIZ_DIR}/lib"
+
+# install leanblueprint
+pip install -U leanblueprint
+
+# create lake project
+lake new BlueprintRep math
+cd BlueprintRep
+
+# build the project
+lake build
+
+# open VSCodium folder to
+~/Desktop/Université/Session8/Projet/IFT3150/BlueprintRep
+
+
