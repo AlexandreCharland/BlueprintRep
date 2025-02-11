@@ -29,3 +29,34 @@ lake build
 ~/Desktop/Université/Session8/Projet/IFT3150/BlueprintRep
 
 
+brew install git-flow
+git flow init
+
+git flow feature start LeanBluePrint
+# fuck things up
+# if it works:
+git flow feature finish LeanBluePrint
+
+# merge le feature dans develop
+git checkout develop
+git merge feature/LeanBluePrint
+# do the first time
+git push --set-upstream origin develop
+# otherwise
+git push
+
+# merge dans main
+git checkout main
+git merge develop
+git push
+
+
+# some work not documented...
+
+cd ~/Desktop/Université/Session8/Projet/IFT3150/BlueprintRep/blueprint
+leanblueprint serve
+
+# ouvrir la page web
+http://127.0.0.1:8000/
+
+

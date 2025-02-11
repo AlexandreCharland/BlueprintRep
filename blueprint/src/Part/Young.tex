@@ -1,24 +1,34 @@
 \chapter{Specht modules}
 
-\begin{theorem}[injEntry]
-    \label{thm:injEntry}
-    \lean{injEntry}
+\begin{definition}[YoungTableau]
+    \label{YoungTableau}
+    \lean{YoungTableau}
+    \leanok
+    Un YoungTableau est une fonction des cellules d'un YoungDiagram de taille n et retourne un naturel de 0 à n-1
+\end{definition}
+
+\begin{theorem}[injYu]
+    \label{injYu}
+    \lean{injYu}
     \leanok
     Un YoungTableau est injectif sur les entrés qui sont dans le YoungDiagram
 \end{theorem}
 \begin{proof}
+    \uses{YoungTableau}
     \leanok
     Par définition d'un YoungTableau
 \end{proof}
 
 
-\begin{theorem}[zeros]
-    \label{thm:zeros}
-    \lean{zeros}
+\begin{theorem}[bijYu]
+    \label{bijYu}
+    \lean{bijYu}
     \leanok
-    Si i,j n'est pas élément du YoungDiagram, alors la valeur de i,j dans le YoungTableau est null
+    Un YoungTableau est une bijection entre les case de son YoungDiagram et les naturels de 0 à n-1
 \end{theorem}
 \begin{proof}
+    \uses{injYu}
     \leanok
-    Par définition
+    Comme il est injectif et le domaine et codomaine sont fini et ont la même cardinalité.\\
+    La fonction doit être bijective
 \end{proof}

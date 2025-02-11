@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1739138392 "print.tex" "/Users/alexandrecharland/Desktop/Université/Session8/Projet/IFT3150/BlueprintRep/blueprint/print/print.pdf" "print" 1739138393 0
-  "/Users/alexandrecharland/Desktop/Université/Session8/Projet/IFT3150/BlueprintRep/blueprint/print/print.aux" 1739138392 834 f09be0381a70ed9d58acfa57032664ec "pdflatex"
-  "/Users/alexandrecharland/Desktop/Université/Session8/Projet/IFT3150/BlueprintRep/blueprint/print/print.out" 1739138392 116 951df72ebecdc7b2fb30d0d623b2761e "pdflatex"
+["pdflatex"] 1739295043 "print.tex" "/Users/alexandrecharland/Desktop/Université/Session8/Projet/IFT3150/BlueprintRep/blueprint/print/print.pdf" "print" 1739295043 0
+  "/Users/alexandrecharland/Desktop/Université/Session8/Projet/IFT3150/BlueprintRep/blueprint/print/print.aux" 1739295043 879 4a300bc7bbd4535d315766d59c9301cb "pdflatex"
+  "/Users/alexandrecharland/Desktop/Université/Session8/Projet/IFT3150/BlueprintRep/blueprint/print/print.out" 1739295043 116 951df72ebecdc7b2fb30d0d623b2761e "pdflatex"
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -84,11 +84,11 @@
   "/usr/local/texlive/2023/texmf-dist/web2c/texmf.cnf" 1677365944 40745 87bb86a62d462f93a1efc6b0c65c872e ""
   "/usr/local/texlive/2023/texmf-var/web2c/xetex/xelatex.fmt" 1703433719 10502840 2cbc2de438c7b16a91221aea8de821b2 ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
-  "Part/Young.tex" 1739138389 526 9144c887a43bc4e5c9aa88525ae9b5a6 ""
-  "content.tex" 1739136218 18 c36dc804e551b996b54499735a48ce90 ""
-  "macros/common.tex" 1739120611 820 60fafcc3aa944a5e60030581a943ef6b ""
-  "macros/print.tex" 1739120611 1101 87627b2ec24fef68edc71c13f43f7bab ""
-  "print.tex" 1739135483 1125 0e1492940034c874029cf6b33606e8af ""
+  "Part/Young.tex" 1739295040 889 13584e8c46f20c25ad81c9581ea4d09f ""
+  "content.tex" 1739143782 18 c36dc804e551b996b54499735a48ce90 ""
+  "macros/common.tex" 1739143782 820 60fafcc3aa944a5e60030581a943ef6b ""
+  "macros/print.tex" 1739143782 1101 87627b2ec24fef68edc71c13f43f7bab ""
+  "print.tex" 1739143782 1125 0e1492940034c874029cf6b33606e8af ""
   (generated)
   "/Users/alexandrecharland/Desktop/Université/Session8/Projet/IFT3150/BlueprintRep/blueprint/print/print.aux"
   "/Users/alexandrecharland/Desktop/Université/Session8/Projet/IFT3150/BlueprintRep/blueprint/print/print.log"
