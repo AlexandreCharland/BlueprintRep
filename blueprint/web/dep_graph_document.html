@@ -121,6 +121,96 @@
 
 
     
+    <div class="dep-modal-container" id="Pu_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="Pu" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">4</span><span class="definition_thmtitle">Pu</span></div>
+    <div class="thm_thmcontent"><p>   Pu est un sous groupe de \(S_{n}\), défini de la façon suivante:<br />Un élément de Pu permute les entré du YoungDiagram si ils sont sur la même rangé. </p>
+</div>
+
+    <a class="latex_link" href="sect0001.html#Pu">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://AlexandreCharland.github.io/BlueprintRep/docs/find/#doc/Pu">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="Qu_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="Qu" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">5</span><span class="definition_thmtitle">Qu</span></div>
+    <div class="thm_thmcontent"><p>   Pu est un sous groupe de \(S_{n}\), défini de la façon suivante:<br />Un élément de Pu permute les entré du YoungDiagram si ils sont sur la même colonne. </p>
+</div>
+
+    <a class="latex_link" href="sect0001.html#Qu">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://AlexandreCharland.github.io/BlueprintRep/docs/find/#doc/Qu">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="sectPuQu_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="sectPuQu" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">6</span><span class="lemma_thmtitle">sectPuQu</span></div>
+    <div class="thm_thmcontent"><p>  Pour un même YoungTableau, l’intersection de \(P_{\mu }\) et \(Q_{\mu }\) est \({1}\) </p>
+</div>
+
+    <a class="latex_link" href="sect0001.html#sectPuQu">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
     <div class="dep-modal-container" id="YoungTableau_modal">
       <div class="dep-modal-content">
           <button class="dep-closebtn">
@@ -167,7 +257,7 @@ graphContainer.graphviz({useWorker: true})
     .width(width)
     .height(height)
     .fit(true)
-    .renderDot(`strict digraph "" {	graph [bgcolor=transparent];	node [label="\N",		penwidth=1.8	];	edge [arrowhead=vee];	YoungTableau	[color=green,		fillcolor="#B0ECA3",		label=YoungTableau,		shape=box,		style=filled];	injYu	[color=green,		fillcolor="#1CAC78",		label=injYu,		shape=ellipse,		style=filled];	YoungTableau -> injYu;	bijYu	[color=green,		fillcolor="#1CAC78",		label=bijYu,		shape=ellipse,		style=filled];	injYu -> bijYu;}`)
+    .renderDot(`strict digraph "" {	graph [bgcolor=transparent];	node [label="\N",		penwidth=1.8	];	edge [arrowhead=vee];	YoungTableau	[color=green,		fillcolor="#B0ECA3",		label=YoungTableau,		shape=box,		style=filled];	injYu	[color=green,		fillcolor="#1CAC78",		label=injYu,		shape=ellipse,		style=filled];	YoungTableau -> injYu;	bijYu	[color=green,		fillcolor="#1CAC78",		label=bijYu,		shape=ellipse,		style=filled];	injYu -> bijYu;	Pu	[color=green,		fillcolor="#B0ECA3",		label=Pu,		shape=box,		style=filled];	bijYu -> Pu;	Qu	[color=green,		fillcolor="#B0ECA3",		label=Qu,		shape=box,		style=filled];	bijYu -> Qu;	sectPuQu	[color=blue,		fillcolor="#A3D6FF",		label=sectPuQu,		shape=ellipse,		style=filled];	Pu -> sectPuQu;	Qu -> sectPuQu;}`)
     .on("end", interactive);
 
 latexLabelEscaper = function(label) {

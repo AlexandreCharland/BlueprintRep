@@ -32,3 +32,52 @@
     Comme il est injectif et le domaine et codomaine sont fini et ont la même cardinalité.\\
     La fonction doit être bijective
 \end{proof}
+
+\begin{definition}[Pu]
+    \label{Pu}
+    \lean{Pu}
+    \leanok
+    Pu est un sous groupe de $S_{n}$, défini de la façon suivante:\\
+    Un élément de Pu permute les entré du YoungDiagram si ils sont sur la même rangé.
+\end{definition}
+\begin{proof}
+    \uses{injYu, bijYu}
+    \leanok
+    Il y a trois choses à vérifier.\\
+    Le sous-groupe est fermé sous la composition de fonction\\
+    Preuve:\\
+    Soit $\alpha, \beta \in P_{\mu}$, mq $\alpha \circ \beta$($Y_{\mu}$(i)) = $Y_{\mu}$(j) $\to$ i.y = j.y\\
+    Comme $Y_{\mu}$ est une bijection, $\exists k \in \mu$ tq $Y_{\mu}$(k) = $\beta$($Y_{\mu}$(j))\
+    Comme $\beta \in P_{\mu}$ on a que k.y = j.y\\
+    De plus on a que $\alpha (Y_{\mu}$(k)) = $\alpha \circ \beta$($Y_{\mu}$(i)) = $Y_{\mu}$(j)\\
+    On peut déduire que i.y = k.y = j.y\\
+    \\
+    L'élement neutre est élément de $P_{\mu}$\\
+    La preuve découle de l'injectivité de $Y_{\mu}$\\
+    \\
+    L'inverse est élément de $P_{\mu}$\\
+    Soit $\alpha \in P_{\mu}$, mq $\alpha^{-1} \in P_{\mu}$\\
+    Comme alpha est une bijection, on a que $\alpha^{-1} (Y_{\mu}$(i)) = $Y_{\mu}$(j) $\Leftrightarrow$ $Y_{\mu}$(i) = $\alpha (Y_{\mu}$(j))
+\end{proof}
+
+\begin{definition}[Qu]
+    \label{Qu}
+    \lean{Qu}
+    \leanok
+    Pu est un sous groupe de $S_{n}$, défini de la façon suivante:\\
+    Un élément de Pu permute les entré du YoungDiagram si ils sont sur la même colonne.
+\end{definition}
+\begin{proof}
+    \uses{injYu, bijYu}
+    \leanok
+    La même preuve que Pu
+\end{proof}
+
+\begin{lemma}[sectPuQu]
+    \label{sectPuQu}
+    Pour un même YoungTableau, l'intersection de $P_{\mu}$ et $Q_{\mu}$ est ${1}$
+\end{lemma}
+\begin{proof}
+    \uses{Pu, Qu}
+    TODO
+\end{proof}
