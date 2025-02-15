@@ -7,12 +7,12 @@
     Un YoungTableau est une fonction des cellules d'un YoungDiagram de taille n et retourne un naturel de 0 à n-1
 \end{definition}
 
-\begin{theorem}[injYu]
+\begin{lemma}[injYu]
     \label{injYu}
     \lean{injYu}
     \leanok
     Un YoungTableau est injectif sur les entrés qui sont dans le YoungDiagram
-\end{theorem}
+\end{lemma}
 \begin{proof}
     \uses{YoungTableau}
     \leanok
@@ -20,12 +20,12 @@
 \end{proof}
 
 
-\begin{theorem}[bijYu]
+\begin{lemma}[bijYu]
     \label{bijYu}
     \lean{bijYu}
     \leanok
     Un YoungTableau est une bijection entre les case de son YoungDiagram et les naturels de 0 à n-1
-\end{theorem}
+\end{lemma}
 \begin{proof}
     \uses{injYu}
     \leanok
@@ -75,9 +75,16 @@
 
 \begin{lemma}[sectPuQu]
     \label{sectPuQu}
+    \lean{sectPuQu}
+    \leanok
     Pour un même YoungTableau, l'intersection de $P_{\mu}$ et $Q_{\mu}$ est ${1}$
 \end{lemma}
 \begin{proof}
     \uses{Pu, Qu}
-    TODO
+    Il faut mq $P_{\mu} \cap Q_{\mu} \subseteq {1}$\\
+    Soit $\alpha \in P_{\mu} \cap Q_{\mu}$ et i $\in \mu$\\
+    Comme $Y_{\mu}$ est bijectif, $\exists$ j $\in \mu$, $\alpha ( Y_{\mu} (i)) = Y_{\mu} (j)$\\
+    $\alpha \in P_{\mu} \cap Q_{\mu}$ donc i.x = j.x et i.y = j.y\\
+    Donc i=j $\to \alpha(Y_{\mu}(i))=Y_{\mu}(i)$\\
+    Donc alpha est la fonction identité.\
 \end{proof}
