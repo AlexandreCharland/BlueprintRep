@@ -26,7 +26,7 @@ lemma preImYu {μ : YoungDiagram} (Yᵤ : YoungTableau μ) (n : Fin μ.card) :
   exact h n
 
 def Pu (μ : YoungDiagram) (Yᵤ : YoungTableau μ) : Subgroup (Equiv.Perm (Fin μ.card)) where
-  carrier := {x : (Equiv.Perm (Fin μ.card)) | ∀ {i j : μ.cells}, (x (Yᵤ.entry i) = Yᵤ.entry j) → i.val.snd = j.val.snd}
+  carrier := {x : (Equiv.Perm (Fin μ.card)) | ∀ {i j : μ}, (x (Yᵤ.entry i) = Yᵤ.entry j) → i.val.snd = j.val.snd}
   mul_mem' := by
     intros α β a b i j αβ
     rw[Equiv.Perm.coe_mul, Function.comp_apply] at αβ
@@ -48,7 +48,7 @@ def Pu (μ : YoungDiagram) (Yᵤ : YoungTableau μ) : Subgroup (Equiv.Perm (Fin 
     exact h1 h2
 
 def Qu (μ : YoungDiagram) (Yᵤ : YoungTableau μ) : Subgroup (Equiv.Perm (Fin μ.card)) where
-  carrier := {x : (Equiv.Perm (Fin μ.card)) | ∀ {i j : μ.cells}, (x (Yᵤ.entry i) = Yᵤ.entry j) → i.val.fst = j.val.fst}
+  carrier := {x : (Equiv.Perm (Fin μ.card)) | ∀ {i j : μ}, (x (Yᵤ.entry i) = Yᵤ.entry j) → i.val.fst = j.val.fst}
   mul_mem' := by
     intros α β a b i j αβ
     rw[Equiv.Perm.coe_mul, Function.comp_apply] at αβ
@@ -69,7 +69,6 @@ def Qu (μ : YoungDiagram) (Yᵤ : YoungTableau μ) : Subgroup (Equiv.Perm (Fin 
     rw[Eq.comm]
     exact h1 h2
 
-
 lemma sectPuQu (μ : YoungDiagram) (Yᵤ : YoungTableau μ):
   (Pu μ Yᵤ).carrier ∩ (Qu μ Yᵤ).carrier = {↑1} := by
   rw[Set.eq_singleton_iff_unique_mem, Set.mem_inter_iff]
@@ -82,12 +81,11 @@ lemma sectPuQu (μ : YoungDiagram) (Yᵤ : YoungTableau μ):
   obtain ⟨j, hj, a⟩ := preImYu Yᵤ x
   obtain ⟨k, hk, b⟩ := preImYu Yᵤ (f (Yᵤ.entry j))
   rw[Eq.comm] at hk
-  have jk : (j.val.fst = k.val.fst) ∧ (j.val.snd = k.val.snd) := by
-    rw[Pu] at p
-    rw[Qu] at q
-    exact ⟨q hk, p hk⟩
+  rw[Pu] at p
+  rw[Qu] at q
   have h : (j: μ) = (k : μ) := by
-    --Why are the most trivial proposition the most difficult one's to prove.
-    sorry
+    ext
+    exact q hk
+    exact p hk
   rw[← h] at hk
   rw[Equiv.Perm.coe_one, id_eq, ← hj, hk]

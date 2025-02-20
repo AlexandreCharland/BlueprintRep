@@ -211,6 +211,107 @@
 
 
     
+    <div class="dep-modal-container" id="SpechtModules_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="SpechtModules" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">9</span><span class="definition_thmtitle">SpechtModules</span></div>
+    <div class="thm_thmcontent"><p>   Soit \(\mu \) un YoungDiagram. </p>
+<div class="displaymath" id="a0000000011">
+  \[  V_{\mu } := \mathbb {C}[S_{n}]c_{\mu }  \]
+</div>
+<p> \(V_{\mu }\) est appelé un Specht modules.<br />Il est un sous-espace de \(\mathbb {C}[S_{n}]\). </p>
+</div>
+
+    <a class="latex_link" href="sect0002.html#SpechtModules">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="YoungProjectors_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="YoungProjectors" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">7</span><span class="definition_thmtitle">YoungProjectors</span></div>
+    <div class="thm_thmcontent"><p>   Un Young projector est défini par un YoungDiagram \(\mu \)<br /></p>
+<div class="displaymath" id="a0000000009">
+  \[  a_{\mu } := \frac{1}{|P_{\mu }|}\sum _{g \in P_{\mu }}g  \]
+</div>
+<div class="displaymath" id="a0000000010">
+  \[  b_{\mu } := \frac{1}{|Q_{\mu }|}\sum _{g \in Q_{\mu }}(-1)^{g} \]
+</div>
+<p> Où \((-1)^{g}\) est le signe de g </p>
+</div>
+
+    <a class="latex_link" href="sect0001.html#YoungProjectors">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="YoungSymmetriser_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="YoungSymmetriser" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">8</span><span class="definition_thmtitle">YoungSymmetriser</span></div>
+    <div class="thm_thmcontent"><p>   Un Young symmetriser est défini par un YoungDiagram \(\mu \)<br />\(c_{\mu } := a_{\mu } b_{\mu } \) </p>
+</div>
+
+    <a class="latex_link" href="sect0001.html#YoungSymmetriser">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
     <div class="dep-modal-container" id="YoungTableau_modal">
       <div class="dep-modal-content">
           <button class="dep-closebtn">
@@ -257,7 +358,7 @@ graphContainer.graphviz({useWorker: true})
     .width(width)
     .height(height)
     .fit(true)
-    .renderDot(`strict digraph "" {	graph [bgcolor=transparent];	node [label="\N",		penwidth=1.8	];	edge [arrowhead=vee];	Qu	[color=green,		fillcolor="#B0ECA3",		label=Qu,		shape=box,		style=filled];	sectPuQu	[color=green,		fillcolor="#A3D6FF",		label=sectPuQu,		shape=ellipse,		style=filled];	Qu -> sectPuQu;	injYu	[color=green,		fillcolor="#1CAC78",		label=injYu,		shape=ellipse,		style=filled];	bijYu	[color=green,		fillcolor="#1CAC78",		label=bijYu,		shape=ellipse,		style=filled];	injYu -> bijYu;	bijYu -> Qu;	Pu	[color=green,		fillcolor="#B0ECA3",		label=Pu,		shape=box,		style=filled];	bijYu -> Pu;	Pu -> sectPuQu;	YoungTableau	[color=green,		fillcolor="#B0ECA3",		label=YoungTableau,		shape=box,		style=filled];	YoungTableau -> injYu;}`)
+    .renderDot(`strict digraph "" {	graph [bgcolor=transparent];	node [label="\N",		penwidth=1.8	];	edge [arrowhead=vee];	Pu	[color=green,		fillcolor="#B0ECA3",		label=Pu,		shape=box,		style=filled];	YoungProjectors	[color=blue,		fillcolor="#A3D6FF",		label=YoungProjectors,		shape=box,		style=filled];	Pu -> YoungProjectors	[style=dashed];	sectPuQu	[color=green,		fillcolor="#1CAC78",		label=sectPuQu,		shape=ellipse,		style=filled];	Pu -> sectPuQu;	YoungSymmetriser	[label=YoungSymmetriser,		shape=box];	YoungProjectors -> YoungSymmetriser	[style=dashed];	SpechtModules	[label=SpechtModules,		shape=box];	YoungSymmetriser -> SpechtModules	[style=dashed];	bijYu	[color=green,		fillcolor="#1CAC78",		label=bijYu,		shape=ellipse,		style=filled];	bijYu -> Pu;	Qu	[color=green,		fillcolor="#B0ECA3",		label=Qu,		shape=box,		style=filled];	bijYu -> Qu;	Qu -> YoungProjectors	[style=dashed];	Qu -> sectPuQu;	YoungTableau	[color=green,		fillcolor="#B0ECA3",		label=YoungTableau,		shape=box,		style=filled];	injYu	[color=green,		fillcolor="#1CAC78",		label=injYu,		shape=ellipse,		style=filled];	YoungTableau -> injYu;	injYu -> bijYu;}`)
     .on("end", interactive);
 
 latexLabelEscaper = function(label) {

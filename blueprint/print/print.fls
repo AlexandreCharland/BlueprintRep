@@ -761,6 +761,13 @@ INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam5
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
+INPUT ./Part/SpechtModules.tex
+INPUT ./Part/SpechtModules.tex
+INPUT ./Part/SpechtModules.tex
+INPUT Part/SpechtModules.tex
+INPUT ./Part/SpechtModules.tex
+INPUT ./Part/SpechtModules.tex
+INPUT Part/SpechtModules.tex
 INPUT /Users/alexandrecharland/Desktop/Université/Session8/Projet/IFT3150/BlueprintRep/blueprint/print/print.aux
 INPUT /Users/alexandrecharland/Desktop/Université/Session8/Projet/IFT3150/BlueprintRep/blueprint/print/print.out
 INPUT /Users/alexandrecharland/Desktop/Université/Session8/Projet/IFT3150/BlueprintRep/blueprint/print/print.out
