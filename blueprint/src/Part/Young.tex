@@ -11,10 +11,10 @@
     \label{injYu}
     \lean{injYu}
     \leanok
+    \uses{YoungTableau}
     Un YoungTableau est injectif sur les entrés qui sont dans le YoungDiagram
 \end{lemma}
 \begin{proof}
-    \uses{YoungTableau}
     \leanok
     Par définition d'un YoungTableau
 \end{proof}
@@ -36,8 +36,8 @@
     \label{Pu}
     \lean{Pu}
     \leanok
-    Pu est un sous groupe de $S_{n}$, défini de la façon suivante:\\
-    Un élément de Pu permute les entré du YoungDiagram si ils sont sur la même rangé.
+    $P_{\mu}$ est un sous groupe de $S_{n}$, défini de la façon suivante:\\
+    Un élément de $P_{\mu}$ permute les entré du YoungDiagram si ils sont sur la même rangé.
 \end{definition}
 \begin{proof}
     \uses{injYu, bijYu}
@@ -63,8 +63,8 @@
     \label{Qu}
     \lean{Qu}
     \leanok
-    Pu est un sous groupe de $S_{n}$, défini de la façon suivante:\\
-    Un élément de Pu permute les entré du YoungDiagram si ils sont sur la même colonne.
+    $Q_{\mu}$ est un sous groupe de $S_{n}$, défini de la façon suivante:\\
+    Un élément de $Q_{\mu}$ permute les entré du YoungDiagram si ils sont sur la même colonne.
 \end{definition}
 \begin{proof}
     \uses{injYu, bijYu}
@@ -76,31 +76,63 @@
     \label{sectPuQu}
     \lean{sectPuQu}
     \leanok
+    \uses{Pu, Qu}
     Pour un même YoungTableau, l'intersection de $P_{\mu}$ et $Q_{\mu}$ est ${1}$
 \end{lemma}
 \begin{proof}
-    \uses{Pu, Qu}
     \leanok
     Il faut mq $P_{\mu} \cap Q_{\mu} \subseteq {1}$\\
     Soit $\alpha \in P_{\mu} \cap Q_{\mu}$ et i $\in \mu$\\
     Comme $Y_{\mu}$ est bijectif, $\exists$ j $\in \mu$, $\alpha ( Y_{\mu} (i)) = Y_{\mu} (j)$\\
     $\alpha \in P_{\mu} \cap Q_{\mu}$ donc i.x = j.x et i.y = j.y\\
     Donc i=j $\to \alpha(Y_{\mu}(i))=Y_{\mu}(i)$\\
-    Donc alpha est la fonction identité.\
+    Donc $alpha$ est la fonction id.\
 \end{proof}
 
-\begin{definition}[YoungProjectors]
-    \label{YoungProjectors}
+\begin{definition}[PuQu]
+    \label{PuQu}
     \uses{Pu, Qu}
-    Un Young projector est défini par un YoungDiagram $\mu$\\
-    \[ a_{\mu} := \frac{1}{|P_{\mu}|}\sum_{g \in P_{\mu}}g \]
-    \[ b_{\mu} := \frac{1}{|Q_{\mu}|}\sum_{g \in Q_{\mu}}(-1)^{g}\]
-    Où $(-1)^{g}$ est le signe de g
+    \lean{PuQu}
+    \leanok
+    $P_{\mu}Q_{\mu} := \{g : [0,n-1] \to [0,n-1] | \exists p \in P_{\mu} \land \exists q \in Q_{\mu}, g = p q \}$
 \end{definition}
 
-\begin{definition}[YoungSymmetriser]
-    \label{YoungSymmetriser}
-    \uses{YoungProjectors}
-    Un Young symmetriser est défini par un YoungDiagram $\mu$\\
-    $c_{\mu} := a_{\mu} b_{\mu} $
-\end{definition}
+\begin{lemma}[qWellDefined]
+    \label{qWellDefined}
+    \uses{bijYu}
+    Soit $g : [0,n-1] \to [0,n-1]$ une fonction bijective et $Y_{\mu}$ un YoungTableau.\\
+    Si $\forall i, j, k, l \in \mu, i \neq j, g(Y_{\mu}(i)) = Y_{\mu}(k), g(Y_{\mu}(j)) = Y_{\mu}(l)$ alors $i.x \neq j.x \lor k.y \neq l.y$.\\
+    $q : [0,n-1] \to [0,n-1]$, $q(Y_{\mu}(i)) = Y_{\mu}(i.x,Y_{\mu}^{-1} \circ g \circ Y_{\mu}(i).y)$ est bien défini
+\end{lemma}
+\begin{proof}
+    Il suffit de montré que $(i.x,Y_{\mu}^{-1} \circ g \circ Y_{\mu}(i).y) \in \mu$.\\
+    TODO Figure it out
+\end{proof}
+
+\begin{lemma}[No2FromSameColToSameRow]
+    \label{No2FromSameColToSameRow}
+    \uses{PuQu}
+    Soit $g : [0,n-1] \to [0,n-1]$ une fonction bijective et $Y_{\mu}$ un YoungTableau.\\
+    Si $\forall i, j, k, l \in \mu, i \neq j, g(Y_{\mu}(i)) = Y_{\mu}(k), g(Y_{\mu}(j)) = Y_{\mu}(l)$ alors $i.x \neq j.x \lor k.y \neq l.y$.\\
+    Alors $g \in P_{\mu}Q_{\mu}$
+\end{lemma}
+\begin{proof}
+    \uses{qWellDefined}
+    Posons $q(Y_{\mu}(i)) := Y_{\mu}(i.x,(Y_{\mu}^{-1} \circ g \circ Y_{\mu}(i)).y)$.\\
+    Par le lemme qWellDefined, nous avons que q est bien définit.\\
+    Montrons que $q \in Q_{\mu}$\\
+    Si q n'est pas injectif alors $\exists k, l \in \mu$ tq $k \neq l, q(Y_{\mu}(k))=q(Y_{\mu}(l))$.\\
+    Donc $Y_{\mu}((Y_{\mu}^{-1} \circ g \circ Y_{\mu}(k)).x,k.y) = Y_{\mu}((Y_{\mu}^{-1} \circ g \circ Y_{\mu}(l)).x,l.y)$.\\
+    Comme $Y_{\mu}^{-1} \circ g \circ Y_{\mu}$ est bijectif, $\exists! i,j \in \mu$ tq $i \neq j, Y_{\mu}^{-1} \circ g Y_{\mu}(k)=i, Y_{\mu}^{-1} \circ g Y_{\mu}(l)=j$.\\
+    Donc $\exists i, j, k, l \in \mu, i \neq j, g(Y_{\mu}(i)) = Y_{\mu}(k), g(Y_{\mu}(j)) = Y_{\mu}(l)$ et $i.x = j.x \land k.y = l.y$.\\
+    Contradiction d'hypothèse.\\
+    Donc $q$ est injectif. De plus comme le domaine et codomaine sont finis et de même taille, on a que $q$ est une bijection. Ainsi $q \in Q_{\mu}$.\\
+    \\
+    Posons $p(Y_{\mu}(i)) := Y_{\mu}((Y_{\mu}^{-1} \circ g \circ q^{-1} \circ Y_{\mu}(i)).x,i.y)$.\\
+    On remarque $p \circ q = g$. Soit $i \in \mu$. $\exists j \in \mu$ tq $g(Y_{\mu}(i))=Y_{\mu}(j)$.\\
+    Donc $Y_{\mu}^{-1} \circ g \circ Y_{\mu}(i) = j$
+    \[ p \circ q(Y_{\mu}(i)) = p (Y_{\mu}(i.x,(Y_{\mu}^{-1} \circ g \circ Y_{\mu}(i)).y)) = p (Y_{\mu}(i.x,j.y)) \]
+    \[Y_{\mu}((Y_{\mu}^{-1} \circ g \circ q^{-1} \circ Y_{\mu}(i.x,j.y)).x,j.y) = Y_{\mu}((Y_{\mu}^{-1} \circ g \circ Y_{\mu}(i)).x,j.y)\]
+    \[ Y_{\mu}(j.x,j.y) = Y_{\mu}(j)\]
+    Donc $p$ est bien définit, et $g \in P_{\mu} Q_{\mu}$
+\end{proof}

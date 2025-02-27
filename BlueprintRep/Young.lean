@@ -3,7 +3,7 @@ import Mathlib.GroupTheory.Perm.Basic
 import Mathlib.Algebra.Group.Subgroup.Defs
 
 structure YoungTableau (μ : YoungDiagram) where
-  entry : μ.cells → (Fin μ.card)
+  entry : μ.cells → (Finset.range μ.card)
   inj : ∀ {i j : μ.cells}, entry i = entry j → i = j
 
 lemma injYu {μ : YoungDiagram} (Yᵤ : YoungTableau μ) :
@@ -18,15 +18,15 @@ lemma bijYu {μ : YoungDiagram} (Yᵤ : YoungTableau μ) :
   simp
   exact injYu Yᵤ
 
-lemma preImYu {μ : YoungDiagram} (Yᵤ : YoungTableau μ) (n : Fin μ.card) :
+lemma preImYu {μ : YoungDiagram} (Yᵤ : YoungTableau μ) (n : Finset.range μ.card) :
   ∃! (i : μ.cells), Yᵤ.entry i = n := by
-  have h : ∀ (j' : Fin μ.card), ∃! i', Yᵤ.entry i' = j' := by
+  have h : ∀ (j' : Finset.range μ.card), ∃! i', Yᵤ.entry i' = j' := by
       rw[← Function.bijective_iff_existsUnique _]
       exact (bijYu Yᵤ)
   exact h n
 
-def Pu (μ : YoungDiagram) (Yᵤ : YoungTableau μ) : Subgroup (Equiv.Perm (Fin μ.card)) where
-  carrier := {x : (Equiv.Perm (Fin μ.card)) | ∀ {i j : μ}, (x (Yᵤ.entry i) = Yᵤ.entry j) → i.val.snd = j.val.snd}
+def Pu (μ : YoungDiagram) (Yᵤ : YoungTableau μ) : Subgroup (Equiv.Perm (Finset.range μ.card)) where
+  carrier := {x : (Equiv.Perm (Finset.range μ.card)) | ∀ {i j : μ}, (x (Yᵤ.entry i) = Yᵤ.entry j) → i.val.snd = j.val.snd}
   mul_mem' := by
     intros α β a b i j αβ
     rw[Equiv.Perm.coe_mul, Function.comp_apply] at αβ
@@ -47,8 +47,8 @@ def Pu (μ : YoungDiagram) (Yᵤ : YoungTableau μ) : Subgroup (Equiv.Perm (Fin 
     rw[Eq.comm]
     exact h1 h2
 
-def Qu (μ : YoungDiagram) (Yᵤ : YoungTableau μ) : Subgroup (Equiv.Perm (Fin μ.card)) where
-  carrier := {x : (Equiv.Perm (Fin μ.card)) | ∀ {i j : μ}, (x (Yᵤ.entry i) = Yᵤ.entry j) → i.val.fst = j.val.fst}
+def Qu (μ : YoungDiagram) (Yᵤ : YoungTableau μ) : Subgroup (Equiv.Perm (Finset.range μ.card)) where
+  carrier := {x : (Equiv.Perm (Finset.range μ.card)) | ∀ {i j : μ}, (x (Yᵤ.entry i) = Yᵤ.entry j) → i.val.fst = j.val.fst}
   mul_mem' := by
     intros α β a b i j αβ
     rw[Equiv.Perm.coe_mul, Function.comp_apply] at αβ
@@ -89,3 +89,5 @@ lemma sectPuQu (μ : YoungDiagram) (Yᵤ : YoungTableau μ):
     exact p hk
   rw[← h] at hk
   rw[Equiv.Perm.coe_one, id_eq, ← hj, hk]
+
+def PuQu (μ : YoungDiagram) (Yᵤ : YoungTableau μ) := {g : (Equiv.Perm (Finset.range μ.card)) | ∃ p ∈ (Pu μ Yᵤ), ∃ q ∈ (Qu μ Yᵤ), g = p ∘ q}

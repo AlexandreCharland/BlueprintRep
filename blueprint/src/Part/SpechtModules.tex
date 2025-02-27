@@ -1,5 +1,21 @@
 \chapter{SpechtModules}
 
+\begin{definition}[YoungProjectors]
+    \label{YoungProjectors}
+    \uses{Pu, Qu}
+    Un Young projector est défini par un YoungDiagram $\mu$\\
+    \[ a_{\mu} := \frac{1}{|P_{\mu}|}\sum_{g \in P_{\mu}}g \]
+    \[ b_{\mu} := \frac{1}{|Q_{\mu}|}\sum_{g \in Q_{\mu}}(-1)^{g}g \]
+    Où $(-1)^{g}$ est le signe de g
+\end{definition}
+
+\begin{definition}[YoungSymmetriser]
+    \label{YoungSymmetriser}
+    \uses{YoungProjectors}
+    Un Young symmetriser est défini par un YoungDiagram $\mu$\\
+    $c_{\mu} := a_{\mu} b_{\mu} $
+\end{definition}
+
 \begin{definition}[SpechtModules]
     \label{SpechtModules}
     \uses{YoungSymmetriser}
@@ -8,3 +24,36 @@
     $V_{\mu}$ est appelé un Specht modules.\\
     Il est un sous-espace de $\mathbb{C}[S_{n}]$.
 \end{definition}
+
+\begin{lemma}[LinearTransformation]
+    \label{LinearTransformation}
+    \uses{YoungSymmetriser}
+    $\exists l_{\mu}$ une fonction linéaire tq\\
+    $\forall g \in \mathbb{C}[S_{n}]$, $a_{\mu} g b_{\mu} = l_{\mu}(g) c_{\mu}$
+\end{lemma}
+\begin{proof}
+    \uses{No2FromSameColToSameRow}
+    Soit g $\in \mathbb{C}[S_{n}]$.\\
+    Si g $\in P_{\mu} Q_{\mu}$, alors $\exists$ p $\in P_{\mu}$ et q $\in Q_{\mu}$ tq g=pq\\
+    \[ a_{\mu} g b_{\mu} = \frac{1}{|P_{\mu}|}\sum_{g \in P_{\mu}}g \; p q \frac{1}{|Q_{\mu}|}\sum_{h \in Q_{\mu}}(-1)^{h} \]
+    \[ \frac{1}{|P_{\mu}|}\sum_{g \in P_{\mu}}g p = \frac{1}{|P_{\mu}|}\sum_{g' \in P_{\mu}}g' \]
+    On peut faire le changement de variable en posant $g' = g p$ et en utilisant le fait que $\phi (g) =g p$ est un isomorphisme de groupe. Ainsi les deux sommes sont équivalantes à un réordenement près.
+    \[ \frac{1}{|Q_{\mu}|}\sum_{h \in Q_{\mu}}(-1)^{h}q h = \frac{1}{|Q_{\mu}|}\sum_{h \in Q_{\mu}}(-1)^{h}q h = (-1)^{q^{-1}} \frac{1}{|Q_{\mu}|}\sum_{h' \in Q_{\mu}}(-1)^{h'}h' \]
+    \[ a_{\mu} g b_{\mu} = (-1)^{q}c_{\mu} \]
+    Il ne reste plus à montrer que si g $\notin P_{\mu} Q_{\mu}$ alors $l_{\mu}(g)$=0, car g ne peut pas être exprimer par $c_{\mu}$\\
+    Donc il faut mq $a_{\mu} g b_{\mu}$=0 ou de façon équivalente $a_{\mu} g b_{\mu} = -a_{\mu} g b_{\mu}$\\
+    Il suffit de trouver $t \in P_{\mu}$ tq $g^{-1} t g \in Q_{\mu}$ et $(-1)^t = -1$, car
+    \[ a_{\mu} g b_{\mu} = a_{\mu} t g b_{\mu} = a_{\mu} (g g^{-1}) t g b_{\mu} = a_{\mu} g (g^{-1} t g) b_{\mu} = (-1)^{g^{-1} t g} a_{\mu} g b_{\mu} = -a_{\mu} g b_{\mu} \]
+    Plusieurs changements de variables ont été effectuer pour "faire apparaître et disparaître" des éléments. $(-1)^{g^{-1} t g} = (-1)^{g^{-1}}\cdot (-1)^{t}\cdot (-1)^{g} = (-1)^{g}\cdot (-1)^{t}\cdot (-1)^{g} = -1$\\
+    Par la contraposé du lemme No2FromSameColToSameRow, on a que\\
+    $\exists i,j,k,l \in \mu$ tq $i \neq j, g(Y_{\mu}(i))=Y_{\mu}(k), g(Y_{\mu}(j))=Y_{\mu}(l), i.x=j.x$ et $k.y = l.y$.\\
+    Posons t : [0,n-1] $\to$ [0,n-1]
+    \[ t(n) = \begin{cases} Y_{\mu}(k) & \text{si } n=Y_{\mu}(l)\\
+                            Y_{\mu}(l) & \text{si } n=Y_{\mu}(k)\\
+                            n & \text{sinon} 
+    \end{cases}\]
+    Par construction, $t \in P_{\mu}$ et $(-1)^t = -1$. Il suffit de montré que $g^{-1} t g \in Q_{\mu}$
+    \[ g^{-1} \circ t \circ g(Y_{\mu}(i)) = g^{-1} \circ t (Y_{\mu}(k)) = g^{-1}(Y_{\mu}(l)) = Y_{\mu}(j) \]
+    \[ g^{-1} \circ t \circ g(Y_{\mu}(j)) = g^{-1} \circ t (Y_{\mu}(l)) = g^{-1}(Y_{\mu}(k)) = Y_{\mu}(i) \]
+    On remarque que si $m \in \mu \backslash \{i,j\}, g(Y_{\mu}(m)) \notin \{Y_{\mu}(k), Y_{\mu}(l)\}$. Donc $t(g(Y_{\mu}(m)))$ se comporte comme la fonction identité. Ainsi $g^{-1} t g \in Q_{\mu}$.\\
+\end{proof}
