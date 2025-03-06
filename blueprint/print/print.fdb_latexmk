@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1740676081 "print.tex" "/Users/alexandrecharland/Desktop/Université/Session8/Projet/IFT3150/BlueprintRep/blueprint/print/print.pdf" "print" 1740676083 0
-  "/Users/alexandrecharland/Desktop/Université/Session8/Projet/IFT3150/BlueprintRep/blueprint/print/print.aux" 1740676082 1651 d39cabf6ee7c6d51d2c65f7208cdea80 "pdflatex"
-  "/Users/alexandrecharland/Desktop/Université/Session8/Projet/IFT3150/BlueprintRep/blueprint/print/print.out" 1740676082 211 141d160f3b5f20bf4b38de8f1df8f33d "pdflatex"
+["pdflatex"] 1741296266 "print.tex" "/Users/alexandrecharland/Desktop/Université/Session8/Projet/IFT3150/BlueprintRep/blueprint/print/print.pdf" "print" 1741296268 0
+  "/Users/alexandrecharland/Desktop/Université/Session8/Projet/IFT3150/BlueprintRep/blueprint/print/print.aux" 1741296267 1720 d717e8b5484151c8c418f1d261541cd7 "pdflatex"
+  "/Users/alexandrecharland/Desktop/Université/Session8/Projet/IFT3150/BlueprintRep/blueprint/print/print.out" 1741296267 211 141d160f3b5f20bf4b38de8f1df8f33d "pdflatex"
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -86,8 +86,8 @@
   "/usr/local/texlive/2023/texmf-dist/web2c/texmf.cnf" 1677365944 40745 87bb86a62d462f93a1efc6b0c65c872e ""
   "/usr/local/texlive/2023/texmf-var/web2c/xetex/xelatex.fmt" 1703433719 10502840 2cbc2de438c7b16a91221aea8de821b2 ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
-  "Part/SpechtModules.tex" 1740676074 3631 9f4e0b633617e1ed88215ed8abb0f51f ""
-  "Part/Young.tex" 1740675975 5777 5d9cb1b6e1df69933bc4ebe92179a3f3 ""
+  "Part/SpechtModules.tex" 1741296262 4070 7fbad473bfe2e820065dc9d015e92668 ""
+  "Part/Young.tex" 1741223787 5777 5d9cb1b6e1df69933bc4ebe92179a3f3 ""
   "content.tex" 1739895748 45 80eacef1967be4e9154d6b6ddbe63009 ""
   "macros/common.tex" 1739143782 820 60fafcc3aa944a5e60030581a943ef6b ""
   "macros/print.tex" 1739143782 1101 87627b2ec24fef68edc71c13f43f7bab ""

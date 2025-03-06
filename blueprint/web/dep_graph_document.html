@@ -91,6 +91,36 @@
 
 
     
+    <div class="dep-modal-container" id="IneqYoungDiagram_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="IneqYoungDiagram" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">14</span><span class="definition_thmtitle">IneqYoungDiagram</span></div>
+    <div class="thm_thmcontent"><p>   Soit \(\mu \) et \(\lambda \) deux YoungDiagram de même cardinalité.<br />On dit que \(\mu {\gt} \lambda \) si \(\exists i \in \mathbb {N}\) tq \(\mu _{i}{\gt}\lambda _{i}\) et \(\forall j \in \mathbb {N}_{{\lt}i}\), \(\mu _{j} = \lambda _{j}\). </p>
+</div>
+
+    <a class="latex_link" href="sect0002.html#IneqYoungDiagram">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://AlexandreCharland.github.io/BlueprintRep/docs/find/#doc/IneqYoungDiagram">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
     <div class="dep-modal-container" id="injYu_modal">
       <div class="dep-modal-content">
           <button class="dep-closebtn">
@@ -133,7 +163,7 @@
       Lemma
       </span>
       <span class="lemma_thmlabel">13</span><span class="lemma_thmtitle">LinearTransformation</span></div>
-    <div class="thm_thmcontent"><p>   \(\exists l_{\mu }\) une fonction linéaire tq<br />\(\forall g \in \mathbb {C}[S_{n}]\), \(a_{\mu } g b_{\mu } = l_{\mu }(g) c_{\mu }\) </p>
+    <div class="thm_thmcontent"><p>   \(\exists l_{\mu }\) une fonction linéaire tq<br />\(\forall x \in \mathbb {C}[S_{n}]\), \(a_{\mu } x b_{\mu } = l_{\mu }(x) c_{\mu }\) </p>
 </div>
 
     <a class="latex_link" href="sect0002.html#LinearTransformation">LaTeX</a>
@@ -478,7 +508,7 @@ graphContainer.graphviz({useWorker: true})
     .width(width)
     .height(height)
     .fit(true)
-    .renderDot(`strict digraph "" {	graph [bgcolor=transparent];	node [label="\N",		penwidth=1.8	];	edge [arrowhead=vee];	YoungTableau	[color=green,		fillcolor="#B0ECA3",		label=YoungTableau,		shape=box,		style=filled];	injYu	[color=green,		fillcolor="#1CAC78",		label=injYu,		shape=ellipse,		style=filled];	YoungTableau -> injYu	[style=dashed];	bijYu	[color=green,		fillcolor="#1CAC78",		label=bijYu,		shape=ellipse,		style=filled];	injYu -> bijYu;	Qu	[color=green,		fillcolor="#B0ECA3",		label=Qu,		shape=box,		style=filled];	bijYu -> Qu;	Pu	[color=green,		fillcolor="#B0ECA3",		label=Pu,		shape=box,		style=filled];	bijYu -> Pu;	qWellDefined	[color=blue,		fillcolor="#A3D6FF",		label=qWellDefined,		shape=ellipse,		style=filled];	bijYu -> qWellDefined	[style=dashed];	YoungProjectors	[color=blue,		fillcolor="#A3D6FF",		label=YoungProjectors,		shape=box,		style=filled];	Qu -> YoungProjectors	[style=dashed];	PuQu	[color=green,		fillcolor="#B0ECA3",		label=PuQu,		shape=box,		style=filled];	Qu -> PuQu	[style=dashed];	sectPuQu	[color=green,		fillcolor="#1CAC78",		label=sectPuQu,		shape=ellipse,		style=filled];	Qu -> sectPuQu	[style=dashed];	YoungSymmetriser	[label=YoungSymmetriser,		shape=box];	YoungProjectors -> YoungSymmetriser	[style=dashed];	No2FromSameColToSameRow	[color=blue,		label=No2FromSameColToSameRow,		shape=ellipse];	PuQu -> No2FromSameColToSameRow	[style=dashed];	LinearTransformation	[label=LinearTransformation,		shape=ellipse];	YoungSymmetriser -> LinearTransformation	[style=dashed];	SpechtModules	[label=SpechtModules,		shape=box];	YoungSymmetriser -> SpechtModules	[style=dashed];	No2FromSameColToSameRow -> LinearTransformation;	Pu -> YoungProjectors	[style=dashed];	Pu -> PuQu	[style=dashed];	Pu -> sectPuQu	[style=dashed];	qWellDefined -> No2FromSameColToSameRow;}`)
+    .renderDot(`strict digraph "" {	graph [bgcolor=transparent];	node [label="\N",		penwidth=1.8	];	edge [arrowhead=vee];	Pu	[color=green,		fillcolor="#B0ECA3",		label=Pu,		shape=box,		style=filled];	PuQu	[color=green,		fillcolor="#B0ECA3",		label=PuQu,		shape=box,		style=filled];	Pu -> PuQu	[style=dashed];	YoungProjectors	[color=blue,		fillcolor="#A3D6FF",		label=YoungProjectors,		shape=box,		style=filled];	Pu -> YoungProjectors	[style=dashed];	sectPuQu	[color=green,		fillcolor="#1CAC78",		label=sectPuQu,		shape=ellipse,		style=filled];	Pu -> sectPuQu	[style=dashed];	No2FromSameColToSameRow	[color=blue,		label=No2FromSameColToSameRow,		shape=ellipse];	PuQu -> No2FromSameColToSameRow	[style=dashed];	YoungSymmetriser	[label=YoungSymmetriser,		shape=box];	YoungProjectors -> YoungSymmetriser	[style=dashed];	LinearTransformation	[label=LinearTransformation,		shape=ellipse];	No2FromSameColToSameRow -> LinearTransformation;	SpechtModules	[label=SpechtModules,		shape=box];	YoungSymmetriser -> SpechtModules	[style=dashed];	YoungSymmetriser -> LinearTransformation	[style=dashed];	IneqYoungDiagram	[color=green,		fillcolor="#B0ECA3",		label=IneqYoungDiagram,		shape=box,		style=filled];	injYu	[color=green,		fillcolor="#1CAC78",		label=injYu,		shape=ellipse,		style=filled];	bijYu	[color=green,		fillcolor="#1CAC78",		label=bijYu,		shape=ellipse,		style=filled];	injYu -> bijYu;	bijYu -> Pu;	Qu	[color=green,		fillcolor="#B0ECA3",		label=Qu,		shape=box,		style=filled];	bijYu -> Qu;	qWellDefined	[color=blue,		fillcolor="#A3D6FF",		label=qWellDefined,		shape=ellipse,		style=filled];	bijYu -> qWellDefined	[style=dashed];	Qu -> PuQu	[style=dashed];	Qu -> YoungProjectors	[style=dashed];	Qu -> sectPuQu	[style=dashed];	qWellDefined -> No2FromSameColToSameRow;	YoungTableau	[color=green,		fillcolor="#B0ECA3",		label=YoungTableau,		shape=box,		style=filled];	YoungTableau -> injYu	[style=dashed];}`)
     .on("end", interactive);
 
 latexLabelEscaper = function(label) {

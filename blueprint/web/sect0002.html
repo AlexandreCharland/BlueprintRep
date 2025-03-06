@@ -233,7 +233,7 @@
         </div>
   </div>
   <div class="lemma_thmcontent">
-  <p>   \(\exists l_{\mu }\) une fonction linéaire tq<br />\(\forall g \in \mathbb {C}[S_{n}]\), \(a_{\mu } g b_{\mu } = l_{\mu }(g) c_{\mu }\) </p>
+  <p>   \(\exists l_{\mu }\) une fonction linéaire tq<br />\(\forall x \in \mathbb {C}[S_{n}]\), \(a_{\mu } x b_{\mu } = l_{\mu }(x) c_{\mu }\) </p>
 
   </div>
 </div>
@@ -245,7 +245,7 @@
     <span class="expand-proof">▶</span>
   </div>
   <div class="proof_content">
-  <p> Soit g \(\in \mathbb {C}[S_{n}]\).<br />Si g \(\in P_{\mu } Q_{\mu }\), alors \(\exists \) p \(\in P_{\mu }\) et q \(\in Q_{\mu }\) tq g=pq<br /></p>
+  <p> Soit x \(\in \mathbb {C}[S_{n}]\).<br />x est de la forme \(\sum _{g \in S_n} a_g g\). Examinons se qu’il se passe pour différent g.<br />Si g \(\in P_{\mu } Q_{\mu }\), alors \(\exists \) p \(\in P_{\mu }\) et q \(\in Q_{\mu }\) tq g=pq<br /></p>
 <div class="displaymath" id="a0000000018">
   \[  a_{\mu } g b_{\mu } = \frac{1}{|P_{\mu }|}\sum _{g \in P_{\mu }}g \;  p q \frac{1}{|Q_{\mu }|}\sum _{h \in Q_{\mu }}(-1)^{h}  \]
 </div>
@@ -275,6 +275,50 @@
   \[  g^{-1} \circ t \circ g(Y_{\mu }(j)) = g^{-1} \circ t (Y_{\mu }(l)) = g^{-1}(Y_{\mu }(k)) = Y_{\mu }(i)  \]
 </div>
 <p> On remarque que si \(m \in \mu \backslash \{ i,j\} , g(Y_{\mu }(m)) \notin \{ Y_{\mu }(k), Y_{\mu }(l)\} \). Donc \(t(g(Y_{\mu }(m)))\) se comporte comme la fonction identité. Ainsi \(g^{-1} t g \in Q_{\mu }\).<br /></p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="IneqYoungDiagram">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">14</span>
+    <span class="definition_thmtitle">IneqYoungDiagram</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#IneqYoungDiagram">#</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://AlexandreCharland.github.io/BlueprintRep/docs/find/#doc/IneqYoungDiagram" class="lean_decl">IneqYoungDiagram</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>   Soit \(\mu \) et \(\lambda \) deux YoungDiagram de même cardinalité.<br />On dit que \(\mu {\gt} \lambda \) si \(\exists i \in \mathbb {N}\) tq \(\mu _{i}{\gt}\lambda _{i}\) et \(\forall j \in \mathbb {N}_{{\lt}i}\), \(\mu _{j} = \lambda _{j}\). </p>
 
   </div>
 </div>
