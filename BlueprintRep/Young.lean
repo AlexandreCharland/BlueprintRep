@@ -1,6 +1,7 @@
-import Mathlib.Combinatorics.Young.YoungDiagram
-import Mathlib.GroupTheory.Perm.Basic
-import Mathlib.Algebra.Group.Subgroup.Defs
+import Mathlib.Combinatorics.Young.YoungDiagram --Utilisé pour le YoungDiagram
+import Mathlib.GroupTheory.Perm.Basic --Utilisé pour le groupe de permutation
+import Mathlib.Algebra.Group.Subgroup.Defs --Utilisé pour les sous groupes
+import Mathlib.Data.ZMod.Basic --Utilisé pour définir la cardinalité
 
 structure YoungTableau (μ : YoungDiagram) where
   entry : μ.cells → (Finset.range μ.card)
@@ -47,6 +48,10 @@ def Pu (μ : YoungDiagram) (Yᵤ : YoungTableau μ) : Subgroup (Equiv.Perm (Fins
     rw[Eq.comm]
     exact h1 h2
 
+noncomputable def PuCard (μ : YoungDiagram) (Yᵤ : YoungTableau μ) : ℕ := by
+  have h : Fintype (Pu μ Yᵤ) := Fintype.ofFinite ↥(Pu μ Yᵤ)
+  exact Fintype.card (Pu μ Yᵤ)
+
 def Qu (μ : YoungDiagram) (Yᵤ : YoungTableau μ) : Subgroup (Equiv.Perm (Finset.range μ.card)) where
   carrier := {x : (Equiv.Perm (Finset.range μ.card)) | ∀ {i j : μ}, (x (Yᵤ.entry i) = Yᵤ.entry j) → i.val.fst = j.val.fst}
   mul_mem' := by
@@ -68,6 +73,10 @@ def Qu (μ : YoungDiagram) (Yᵤ : YoungTableau μ) : Subgroup (Equiv.Perm (Fins
     rw[Eq.comm, Equiv.Perm.eq_inv_iff_eq] at h2
     rw[Eq.comm]
     exact h1 h2
+
+noncomputable def QuCard (μ : YoungDiagram) (Yᵤ : YoungTableau μ) : ℕ := by
+  have h : Fintype (Qu μ Yᵤ) := Fintype.ofFinite ↥(Qu μ Yᵤ)
+  exact Fintype.card (Qu μ Yᵤ)
 
 lemma sectPuQu (μ : YoungDiagram) (Yᵤ : YoungTableau μ):
   (Pu μ Yᵤ).carrier ∩ (Qu μ Yᵤ).carrier = {↑1} := by
