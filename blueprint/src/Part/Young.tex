@@ -32,6 +32,18 @@
     La fonction doit être bijective
 \end{proof}
 
+\begin{lemma}[preImYu]
+    \label{preImYu}
+    \lean{preImYu}
+    \leanok
+    Tous nombre de 0 à n-1 possède une unique case associé dans $\mu$ par $Y_{\mu}$
+\end{lemma}
+\begin{proof}
+    \uses{bijYu}
+    \leanok
+    Trivial sachant que $Y_{\mu}$ est bijectif
+\end{proof}
+
 \begin{definition}[Pu]
     \label{Pu}
     \lean{Pu}
@@ -40,7 +52,7 @@
     Un élément de $P_{\mu}$ permute les entré du YoungDiagram si ils sont sur la même rangé.
 \end{definition}
 \begin{proof}
-    \uses{injYu, bijYu}
+    \uses{injYu, preImYu}
     \leanok
     Il y a trois choses à vérifier.\\
     Le sous-groupe est fermé sous la composition de fonction\\
@@ -79,7 +91,7 @@
     Un élément de $Q_{\mu}$ permute les entré du YoungDiagram si ils sont sur la même colonne.
 \end{definition}
 \begin{proof}
-    \uses{injYu, bijYu}
+    \uses{injYu, preImYu}
     \leanok
     La même preuve que Pu
 \end{proof}
@@ -121,16 +133,75 @@
     $P_{\mu}Q_{\mu} := \{g : [0,n-1] \to [0,n-1] | \exists p \in P_{\mu} \land \exists q \in Q_{\mu}, g = p q \}$
 \end{definition}
 
-\begin{lemma}[qWellDefined]
-    \label{qWellDefined}
-    \uses{bijYu}
-    Soit $g : [0,n-1] \to [0,n-1]$ une fonction bijective et $Y_{\mu}$ un YoungTableau.\\
-    Si $\forall i, j, k, l \in \mu, i \neq j, g(Y_{\mu}(i)) = Y_{\mu}(k), g(Y_{\mu}(j)) = Y_{\mu}(l)$ alors $i.x \neq j.x \lor k.y \neq l.y$.\\
-    $q : [0,n-1] \to [0,n-1]$, $q(Y_{\mu}(i)) = Y_{\mu}(i.x,Y_{\mu}^{-1} \circ g \circ Y_{\mu}(i).y)$ est bien défini
+\begin{definition}[Gu]
+    \label{Gu}
+    \lean{Gu}
+    \leanok
+    \uses{YoungTableau}
+    $G_{\mu}$ est une permutation de [0, n-1] tq
+    \[ \forall i,j,k,l \in \mu, ((i \neq j) \land (G_{\mu} \circ Y_{\mu} (i) = Y_{\mu} (k)) \land (G_{\mu} \circ Y_{\mu} (j) = Y_{\mu} (l))) → ((i.x \neq j.x) \lor (k.y \neq l.y)) \]
+\end{definition}
+
+\begin{definition}[YuInv]
+    \label{YuInv}
+    \lean{YuInv}
+    \leanok
+    \uses{YoungTableau, bijYu}
+    $Y_{\mu}^{-1}$ est une l'inverse de $Y_{\mu}$
+\end{definition}
+
+\begin{lemma}[staysInY]
+    \label{staysInY}
+    \lean{staysInY}
+    \leanok
+    \uses{Gu, YuInv}
+    \[ \forall m \in [0,n-1], (Y_{\mu}^{-1}(m).x,Y_{\mu}^{-1}(G_{\mu}(m)).y) \in \mu \]
 \end{lemma}
 \begin{proof}
-    Il suffit de montré que $(i.x,Y_{\mu}^{-1} \circ g \circ Y_{\mu}(i).y) \in \mu$.\\
+    No idea...
     TODO Figure it out
+\end{proof}
+
+\begin{definition}[qu]
+    \label{qu}
+    \lean{qu}
+    \leanok
+    \uses{staysInY}
+    $q_{\mu}$ est une permutation de [0, n-1] défini comme
+    \[ q_{\mu}(m)= Y_{\mu}((Y_{\mu}^{-1}(m)).x,(Y_{\mu}^{-1} \circ G_{\mu}(m)).y) \]
+\end{definition}
+\begin{proof}
+    \leanok
+    Par le lemme staysInY, on sait que la fonction $q_{\mu}$ est bien défini.\\
+    Il ne reste plus qu'a montré que $q_{\mu}$ est une bijection.\\
+    TODO
+\end{proof}
+
+\begin{definition}[quInv]
+    \label{quInv}
+    \uses{qu}
+    $q_{\mu}^{-1}$ est la fonction inverse de $q_{\mu}$
+\end{definition}
+
+\begin{lemma}[staysInX]
+    \label{staysInX}
+    \uses{quInv}
+    \[ \forall m \in [0,n-1], ((Y_{\mu}^{-1} \circ G_{\mu} \circ q_{\mu}^{-1}(m)).x, (Y_{\mu}^{-1}(m)).y) \in \mu \]
+\end{lemma}
+\begin{proof}
+    No idea...
+    TODO Figure it out
+\end{proof}
+
+\begin{definition}[pu]
+    \label{pu}
+    \uses{staysInX}
+    $p_{\mu}$ est une permutation de [0,n-1] défini comme
+    \[ q_{\mu}(m)= Y_{\mu}(Y_{\mu}^{-1}(m).x,Y_{\mu}^{-1}(G_{\mu}(m)).y) \]
+\end{definition}
+\begin{proof}
+    TODO
+    
 \end{proof}
 
 \begin{lemma}[No2FromSameColToSameRow]
@@ -141,7 +212,7 @@
     Alors $g \in P_{\mu}Q_{\mu}$
 \end{lemma}
 \begin{proof}
-    \uses{qWellDefined}
+    \uses{pu}
     Posons $q(Y_{\mu}(i)) := Y_{\mu}(i.x,(Y_{\mu}^{-1} \circ g \circ Y_{\mu}(i)).y)$.\\
     Par le lemme qWellDefined, nous avons que q est bien définit.\\
     Montrons que $q \in Q_{\mu}$\\

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.12.24)  11 MAR 2025 11:59
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.12.24)  14 MAR 2025 11:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -720,23 +720,23 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 (Font)              scaled to size 4.99947pt on input line 39.
 
-Underfull \hbox (badness 10000) in paragraph at lines 43--60
+Underfull \hbox (badness 10000) in paragraph at lines 55--72
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 43--60
+Underfull \hbox (badness 10000) in paragraph at lines 55--72
 
  []
 
 [1
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 144--158
+Underfull \hbox (badness 10000) in paragraph at lines 215--229
 
  []
 
-) (./Part/SpechtModules.tex [2]
+[2]) (./Part/SpechtModules.tex [3]
 Chapter 2.
 
 Underfull \hbox (badness 10000) in paragraph at lines 5--7
@@ -748,22 +748,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 35--39
 
  []
 
-[3
+[4
 
-])) [4]
+])) [5]
 (/Users/alexandrecharland/Desktop/Université/Session8/Projet/IFT3150/Blueprint
 Rep/blueprint/print/print.aux)
 Package rerunfilecheck Info: File `print.out' has not changed.
 (rerunfilecheck)             Checksum: 141D160F3B5F20BF4B38DE8F1DF8F33D;211.
  ) 
 Here is how much of TeX's memory you used:
- 16616 strings out of 476683
- 310974 string characters out of 5804046
- 1868018 words of memory out of 5000000
- 36649 multiletter control sequences out of 15000+600000
+ 16623 strings out of 476683
+ 311015 string characters out of 5804046
+ 1867018 words of memory out of 5000000
+ 36656 multiletter control sequences out of 15000+600000
  517642 words of font info for 79 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 86i,9n,115p,332b,421s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 86i,9n,115p,332b,415s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on /Users/alexandrecharland/Desktop/Université/Session8/Projet/
-IFT3150/BlueprintRep/blueprint/print/print.pdf (5 pages).
+IFT3150/BlueprintRep/blueprint/print/print.pdf (6 pages).
