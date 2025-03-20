@@ -51,19 +51,19 @@
 
 <div class="main-text">
 <h1 id="a0000000002">1 Module</h1>
-<div class="lemma_thmwrapper theorem-style-plain" id="MisoHomAM">
+<div class="lemma_thmwrapper theorem-style-plain" id="HomAMisoM">
   <div class="lemma_thmheading">
     <span class="lemma_thmcaption">
     Lemma
     </span>
     <span class="lemma_thmlabel">1</span>
-    <span class="lemma_thmtitle">MisoHomAM</span>
+    <span class="lemma_thmtitle">HomAMisoM</span>
     <div class="thm_header_extras">
 
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0001.html#MisoHomAM">#</a>
+    <a class="icon proof" href="sect0001.html#HomAMisoM">#</a>
     
     <a class="icon proof" href="sect0001.html#a0000000005"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
@@ -73,7 +73,7 @@
         </div>
   </div>
   <div class="lemma_thmcontent">
-  <p>  Soit A un algèbre et M un A-module. </p>
+  <p>  Soit A un anneau unitaire et M un A-module. </p>
 <div class="displaymath" id="a0000000006">
   \[  \text{Hom}_{A}(A,M) \cong M  \]
 </div>
@@ -88,7 +88,152 @@
     <span class="expand-proof">▶</span>
   </div>
   <div class="proof_content">
-  <p>Soit \(m \in M\), \(\psi _{m} : A \to M\) tq \(\psi _{m}(a) = a m\)<br />Soit \(\phi : M \to (A \to M)\) tq \(\phi (m) = \psi _{m}\)<br />On a que \(\phi \) est un homomorphisme, car<br />\(\phi (m+n) = \psi _{m+n}\).<br />\(\forall a \in A\), \(\psi _{m+n}(a) = a (m+n) = (a m) + (a n) = \psi _{m}(a)+\psi _{n}(a)\)<br />Donc \(\psi _{m+n} = \psi _{m}+\psi _{n} \Rightarrow \phi (m+n) = \phi (m)+\phi (n)\)<br />Par le premier théorème d’isomorphisme de module, \(\frac{M}{\text{ker}(\phi )} \cong \text{Im}(\phi )\)<br />Seul \(\phi (1)\) envoit à l’identité de \(\text{Hom}_{A}(A,M)\), donc le noyau est trivial. Il ne reste plus qu’a montré que \(\phi \) atteint tous les homomorphismes de A à M.<br />Supposons que non, alors \(\exists \sigma : A \to M\) homomorphisme tq \(\forall m \in M\), \(\exists a \in A\), tq \(\sigma (a) \neq a m\).<br />Soit \(n \in M\) tq \(\sigma (1)=n\) et \(a \in A\) tq \(\sigma (a) \neq a n\).<br />On sait que \(\sigma (a)=\sigma (a \cdot 1) = a\cdot \sigma (1) = a \cdot n\)<br />Ceci est une contradiction.<br />Donc \(\phi \) est surjectif et on obtient le résultat voulu. </p>
+  <p>Soit \(m \in M\), \(\psi _{m} : A \to M\) tq \(\psi _{m}(a) = a m\)<br />Soit \(\phi : M \to (A \to M)\) tq \(\phi (m) = \psi _{m}\)<br />Il faut montré que \(\psi _{m}\) est un homomorphisme.<br />Soit \(a,b \in A\).<br /></p>
+<div class="displaymath" id="a0000000007">
+  \[  \psi _{m}(a+b) = (a+b)m = a m + b m = \psi _{m}(a) + \psi _{m}(b)  \]
+</div>
+<p> On a que \(\phi \) est un homomorphisme, car<br />\(\phi (m+n) = \psi _{m+n}\).<br />\(\forall a \in A\), \(\psi _{m+n}(a) = a (m+n) = (a m) + (a n) = \psi _{m}(a)+\psi _{n}(a)\)<br />Donc \(\psi _{m+n} = \psi _{m}+\psi _{n} \Rightarrow \phi (m+n) = \phi (m)+\phi (n)\)<br />Par le premier théorème d’isomorphisme de module, \(\frac{M}{\text{ker}(\phi )} \cong \text{Im}(\phi )\)<br />Seul \(\phi (0)\) envoit à l’identité de \(\text{Hom}_{A}(A,M)\), donc le noyau est trivial. Il ne reste plus qu’a montré que \(\phi \) atteint tous les homomorphismes de A à M.<br />Soit \(\sigma \in \text{Hom}_{A}(A,M)\) et \(m \in M\), tq \(\sigma (1)=m\).<br />Soit \(a \in A\)<br />\(\sigma (a) = \sigma (a \cdot 1) = a \cdot \sigma (1)\), car tous élément de l’algèbre agit comme un scalaire sur l’homomorphisme.<br />Donc \(\forall a \in A, \sigma (a) = a \cdot \sigma (1) = a\cdot m\).<br />\(\sigma = \psi _{m}\).<br />Donc \(\phi \) est surjectif et on obtient le résultat voulu. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="MdirectSumIdemp">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">2</span>
+    <span class="lemma_thmtitle">MdirectSumIdemp</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#MdirectSumIdemp">#</a>
+    
+    <a class="icon proof" href="sect0001.html#a0000000008"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>  Soit A un algèbre et \(e \in A\) un idempotant de A. </p>
+<div class="displaymath" id="a0000000009">
+  \[  A = A e \oplus A (1-e)  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000008">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Il suffit de montré que \(\forall m \in A e\) et \(\forall n \in A (1-e)\) tq \(m+n=0 \Rightarrow m=n=0\).<br />Soit m,n tq décris plus haut.<br />Comme \(m \in A e, \exists a \in A\) tq \(a e = m\).<br />Comme \(n \in A (1-e), \exists b \in A\) tq \(b (1-e) = n\).<br /></p>
+<div class="displaymath" id="a0000000010">
+  \[  m+n=a e + b (1-e) = 0 \Rightarrow a e^{2} + b e - b e^{2} = a e + b e - b e = 0 e \Rightarrow m = a e = 0  \]
+</div>
+<div class="displaymath" id="a0000000011">
+  \[  0+n=0 \Rightarrow n=0 \]
+</div>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="HomAeM">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">3</span>
+    <span class="lemma_thmtitle">HomAeM</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#HomAeM">#</a>
+    
+    <a class="icon proof" href="sect0001.html#a0000000012"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>  Soit A un anneau unitaire, M un A-module et e un idempotant de A. </p>
+<div class="displaymath" id="a0000000013">
+  \[  \forall \phi \in \text{Hom}_{A}(Ae,M), \exists m \in e M, \phi (e)=m \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000012">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> Si e=0<br />On a que A0 = 0 donc \(\forall a \in A\)<br /></p>
+<div class="displaymath" id="a0000000014">
+  \[  \phi (0) = \phi (a 0) = a \phi (0)  \]
+</div>
+<p> On conclue que la seul valeur de \(\phi (0)=0 \in \) 0M<br />Si e=1<br />Par le lemme HomAMisoM<br />Sinon \(\exists n \in M\) tq \(\phi (e)=n\) </p>
+<div class="displaymath" id="a0000000015">
+  \[  \phi (e) = n \Rightarrow e \phi (e) = \phi (e) = e n \Rightarrow n = e n  \]
+</div>
+<p> Il faut que n soit en mesure d’absorber \(e \notin {0,1}\). On conclue que \(n \in e M\)<br /></p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="HomAeMisoeM">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">4</span>
+    <span class="lemma_thmtitle">HomAeMisoeM</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#HomAeMisoeM">#</a>
+    
+    <a class="icon proof" href="sect0001.html#a0000000016"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>  Soit A un anneau unitaire, M un A-module et e un idempotant de A. </p>
+<div class="displaymath" id="a0000000017">
+  \[  \text{Hom}_{A}(A e,M) \cong e M \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000016">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> Soit \(m \in e M\), \(\psi _{m} : A e \to M\) tq \(\psi _{m}(a) = a m\)<br />Il faut montré que \(\psi _{m}\) est un homomorphisme.<br />Soit \(a,b \in A e\).<br /></p>
+<div class="displaymath" id="a0000000018">
+  \[  \psi _{m}(a+b) = (a+b)m = a m + b m = \psi _{m}(a) + \psi _{m}(b)  \]
+</div>
+<p> Soit \(\phi : e M \to (A e \to M)\) tq \(\phi (m) = \psi _{m}\)<br />On a que \(\phi \) est un homomorphisme, car<br />\(\phi (m+n) = \psi _{m+n}\).<br />\(\forall a \in A\), \(\psi _{m+n}(a) = a (m+n) = (a m) + (a n) = \psi _{m}(a)+\psi _{n}(a)\)<br />Donc \(\psi _{m+n} = \psi _{m}+\psi _{n} \Rightarrow \phi (m+n) = \phi (m)+\phi (n)\)<br />Par le premier théorème d’isomorphisme de module, \(\frac{e M}{\text{ker}(\phi )} \cong \text{Im}(\phi )\)<br />Seul \(\phi (0)\) envoit à l’identité de \(\text{Hom}_{A}(A,M)\), donc le noyau est trivial.<br />Par le lemme HomAeM, on a que tous les homomorphismes de \(\text{Hom}_{A}(A,M)\) sont atteint. </p>
 
   </div>
 </div>
