@@ -59,10 +59,27 @@
     On remarque que si $m \in \mu \backslash \{i,j\}, g(Y_{\mu}(m)) \notin \{Y_{\mu}(k), Y_{\mu}(l)\}$. Donc $t(g(Y_{\mu}(m)))$ se comporte comme la fonction identité. Ainsi $g^{-1} t g \in Q_{\mu}$.\\
 \end{proof}
 
-\begin{definition}[IneqYoungDiagram]
-    \label{IneqYoungDiagram}
-    \lean{IneqYoungDiagram}
-    \leanok
-    Soit $\mu$ et $\lambda$ deux YoungDiagram de même cardinalité.\\
-    On dit que $\mu > \lambda$ si $\exists i \in \mathbb{N}$ tq $\mu_{i}>\lambda_{i}$ et $\forall j \in \mathbb{N}_{<i}$, $\mu_{j} = \lambda_{j}$.
-\end{definition}
+\begin{lemma}[SmallerImpZero]
+    \label{SmallerImpZero}
+    \uses{YoungSymmetriser, IneqYoungDiagram}
+    Si $\mu > \lambda$, alors\\
+    \[a_{\mu} \mathbb{C}[S_{n}] b_{\lambda} = 0\]
+\end{lemma}
+\begin{proof}
+    Comme $\mu > \lambda$\\
+    TODO montré que\\
+    Donc, il existe deux éléments de la même colomne que g envoit sur la même rangé\\
+    Ainsi un peut construire un t tq t $\in P_{\mu}$ et $g^{-1} t g \in Q_{\lambda}$.\\
+    Par le même argument que le dernier lemme, $a_{\mu} \mathbb{C}[S_{n}] b_{\lambda} = 0$
+\end{proof}
+
+\begin{lemma}[CuPropIdempotent]
+    \label{CuIdempotent}
+    \uses{YoungSymmetriser}
+    $c_{\mu}$ est proportionel à un idempotent. De façon mathématique
+    \[\exists a \in \mathbb{C}, c_{\mu}^{2} = a \cdot c_{\mu} \]
+\end{lemma}
+\begin{proof}
+    \uses{LinearTransformation}
+    On applique le lemme LinearTransformation avec $x = b_{\mu} a_{\mu} \in \mathbb{C}[S_{n}]$.
+\end{proof}

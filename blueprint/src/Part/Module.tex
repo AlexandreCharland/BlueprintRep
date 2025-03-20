@@ -1,0 +1,22 @@
+\chapter{Module}
+
+\begin{lemma}[MisoHomAM]
+    \label{MisoHomAM}
+    Soit A un algèbre et M un A-module.
+    \[ \text{Hom}_{A}(A,M) \cong M \]
+\end{lemma}
+\begin{proof}
+    Soit $m \in M$, $\psi_{m} : A \to M$ tq $\psi_{m}(a) = a m$\\
+    Soit $\phi : M \to (A \to M)$ tq $\phi(m) = \psi_{m}$\\
+    On a que $\phi$ est un homomorphisme, car\\
+    $\phi(m+n) = \psi_{m+n}$.\\
+    $\forall a \in A$, $\psi_{m+n}(a) = a (m+n) = (a m) + (a n) = \psi_{m}(a)+\psi_{n}(a)$\\
+    Donc $\psi_{m+n} = \psi_{m}+\psi_{n} \Rightarrow \phi(m+n) = \phi(m)+\phi(n)$\\
+    Par le premier théorème d'isomorphisme de module, $\frac{M}{\text{ker}(\phi)} \cong \text{Im}(\phi)$\\
+    Seul $\phi(1)$ envoit à l'identité de $\text{Hom}_{A}(A,M)$, donc le noyau est trivial. Il ne reste plus qu'a montré que $\phi$ atteint tous les homomorphismes de A à M.\\
+    Supposons que non, alors $\exists \sigma : A \to M$ homomorphisme tq $\forall m \in M$, $\exists a \in A$, tq $\sigma(a) \neq a m$.\\
+    Soit $n \in M$ tq $\sigma(1)=n$ et $a \in A$ tq $\sigma(a) \neq a n$.\\
+    On sait que $\sigma(a)=\sigma(a \cdot 1) = a\cdot \sigma (1) = a \cdot n$\\
+    Ceci est une contradiction.\\
+    Donc $\phi$ est surjectif et on obtient le résultat voulu.
+\end{proof}
