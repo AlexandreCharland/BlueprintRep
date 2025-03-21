@@ -1,42 +1,18 @@
 \chapter{Module}
 
-\begin{lemma}[HomAMisoM]
-    \label{HomAMisoM}
-    Soit A un anneau unitaire et M un A-module.
-    \[ \text{Hom}_{A}(A,M) \cong M \]
-\end{lemma}
-\begin{proof}
-    Soit $m \in M$, $\psi_{m} : A \to M$ tq $\psi_{m}(a) = a m$\\
-    Soit $\phi : M \to (A \to M)$ tq $\phi(m) = \psi_{m}$\\
-    Il faut montré que $\psi_{m}$ est un homomorphisme.\\
-    Soit $a,b \in A$.\\
-    \[ \psi_{m}(a+b) = (a+b)m = a m + b m = \psi_{m}(a) + \psi_{m}(b) \]
-    On a que $\phi$ est un homomorphisme, car\\
-    $\phi(m+n) = \psi_{m+n}$.\\
-    $\forall a \in A$, $\psi_{m+n}(a) = a (m+n) = (a m) + (a n) = \psi_{m}(a)+\psi_{n}(a)$\\
-    Donc $\psi_{m+n} = \psi_{m}+\psi_{n} \Rightarrow \phi(m+n) = \phi(m)+\phi(n)$\\
-    Par le premier théorème d'isomorphisme de module, $\frac{M}{\text{ker}(\phi)} \cong \text{Im}(\phi)$\\
-    Seul $\phi(0)$ envoit à l'identité de $\text{Hom}_{A}(A,M)$, donc le noyau est trivial. Il ne reste plus qu'a montré que $\phi$ atteint tous les homomorphismes de A à M.\\
-    Soit $\sigma \in \text{Hom}_{A}(A,M)$ et $m \in M$, tq $\sigma(1)=m$.\\
-    Soit $a \in A$\\
-    $\sigma(a) = \sigma(a \cdot 1) = a \cdot \sigma(1)$, car tous élément de l'algèbre agit comme un scalaire sur l'homomorphisme.\\
-    Donc $\forall a \in A, \sigma(a) = a \cdot \sigma(1) = a\cdot m$.\\
-    $\sigma = \psi_{m}$.\\
-    Donc $\phi$ est surjectif et on obtient le résultat voulu.
-\end{proof}
-
 \begin{lemma}[MdirectSumIdemp]
     \label{MdirectSumIdemp}
-    Soit A un algèbre et $e \in A$ un idempotant de A.
-    \[ A = A e \oplus A (1-e) \]
+    Soit A un anneau unitaire et $e \in A$ un idempotant de A.
+    \[ A = e A \oplus (1-e) A \]
 \end{lemma}
 \begin{proof}
     Il suffit de montré que
-    $\forall m \in A e$ et $\forall n \in A (1-e)$ tq $m+n=0 \Rightarrow m=n=0$.\\
+    $\forall m \in e A$ et $\forall n \in (1-e) A$ tq $m+n=0 \Rightarrow m=n=0$.\\
     Soit m,n tq décris plus haut.\\
-    Comme $m \in A e, \exists a \in A$ tq $a e = m$.\\
-    Comme $n \in A (1-e), \exists b \in A$ tq $b (1-e) = n$.\\
-    \[ m+n=a e + b (1-e) = 0 \Rightarrow a e^{2} + b e - b e^{2} = a e + b e - b e = 0 e \Rightarrow m = a e = 0 \]
+    Comme $m \in e A, \exists a \in A$ tq $e a = m$.\\
+    Comme $n \in (1-e) A, \exists b \in A$ tq $(1-e) b = n$.\\
+    \[ m+n=e a + (1-e) b = 0\]
+    \[ e \cdot (e a + (1-e) b) = e^{2} a + (e - e^{2}) b = e a = e 0 \Rightarrow m=0\]
     \[ 0+n=0 \Rightarrow n=0\]
 \end{proof}
 
@@ -46,16 +22,13 @@
     \[ \forall \phi \in \text{Hom}_{A}(Ae,M), \exists m \in e M, \phi(e)=m\]
 \end{lemma}
 \begin{proof}
-    \uses{HomAMisoM}
-    Si e=0\\
-    On a que A0 = {0} donc $\forall a \in A$\\
-    \[ \phi(0) = \phi(a 0) = a \phi (0) \]
-    On conclue que la seul valeur de $\phi(0)=0 \in$ 0M\\
-    Si e=1\\
-    Par le lemme HomAMisoM\\
-    Sinon $\exists n \in M$ tq $\phi(e)=n$
+    \uses{MdirectSumIdemp}
+    Soit $ n \in M$ tq $\phi(e)=n$
     \[ \phi(e) = n \Rightarrow e \phi(e) = \phi(e) = e n \Rightarrow n = e n \]
-    Il faut que n soit en mesure d'absorber $e \notin {0,1}$. On conclue que $n \in e M$\\
+    Par le lemme MdirectSumIdemp, on a que $A = e A \oplus (1-e) A$\\
+    $\exists ! m,a \in A$ tq $n = e m + (1-e) b$.\\
+    $e m + (1-e) b = n = e n = e \cdot (e m + (1-e) b) = e^{2} m + (e - e^{2}) b = e m$\\
+    Donc $b = 0 \Rightarrow n= em \Rightarrow n \in e M$.
 \end{proof}
 
 \begin{lemma}[HomAeMisoeM]
@@ -76,5 +49,11 @@
     Donc $\psi_{m+n} = \psi_{m}+\psi_{n} \Rightarrow \phi(m+n) = \phi(m)+\phi(n)$\\
     Par le premier théorème d'isomorphisme de module, $\frac{e M}{\text{ker}(\phi)} \cong \text{Im}(\phi)$\\
     Seul $\phi(0)$ envoit à l'identité de $\text{Hom}_{A}(A,M)$, donc le noyau est trivial.\\
-    Par le lemme HomAeM, on a que tous les homomorphismes de $\text{Hom}_{A}(A,M)$ sont atteint.
+    La dernière chose a montré est que l'image de $\phi$ est $\text{Hom}_{A}(A e,M)$.\\
+    Soit $\sigma \in \text{Hom}_{A}(A e,M)$.\\
+    Par le lemme HomAeM, $\exists m \in eM$ tq $\sigma(e) = m$.\\
+    Montrons que $\sigma = \phi(m) = \psi_{m}$\\
+    Soit $a \in Ae$ et $b \in A$ tq $a= b e$\\
+    \[ \sigma(a) = \sigma (b e) = \sigma(b e^{2}) = b e \cdot \sigma(e) = b e m = a m = \psi_{m}(a) \]
+    Donc $\sigma \in \text{Im}(\phi)$
 \end{proof}
