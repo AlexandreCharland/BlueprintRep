@@ -83,3 +83,17 @@
     \uses{LinearTransformation}
     On applique le lemme LinearTransformation avec $x = b_{\mu} a_{\mu} \in \mathbb{C}[S_{n}]$.
 \end{proof}
+
+\begin{theorem}[IrreductibleRepresentationSn]
+    \label{IrreductibleRepresentationSn}
+    \uses{SpechtModules}
+    $\forall \mu$ partition de n, $V_{\mu}$ est toute les représentations irréductibles de $S_n$
+\end{theorem}
+\begin{proof}
+    \uses{HomAeMisoeM, CuPropIdempotent, SmallerImpZero, LinearTransformation}
+    Soit $\mu, \lambda$ deux partitions de n et sans perte de généralité, $\mu \geq \lambda$\\
+    \[ \text{Hom}_{\mathbb{C}[S_{n}]}(V_{\mu}, V_{\lambda}) = \text{Hom}_{\mathbb{C}[S_{n}]}(\mathbb{C}[S_{n}]c_{\mu}, \mathbb{C}[S_{n}]c_{\lambda}) \cong c_{\mu}\mathbb{C}[S_{n}]c_{\lambda}  \]
+    Si $\mu > \lambda$ alors $c_{\mu}\mathbb{C}[S_{n}]c_{\lambda} = 0$\\
+    Sinon $\mu = \lambda$ et on a une représentation de dimension 1.\\
+    Comme le nombre de partition de n est égale au nombre de classe de conjugaison de $S_n$ on a que tous les représentations de $S_n$ sont atteintes par $V_{\mu}$.
+\end{proof}

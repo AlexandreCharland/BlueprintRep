@@ -57,3 +57,26 @@
     \[ \sigma(a) = \sigma (b e) = \sigma(b e^{2}) = b e \cdot \sigma(e) = b e m = a m = \psi_{m}(a) \]
     Donc $\sigma \in \text{Im}(\phi)$
 \end{proof}
+
+\begin{lemma}[HomAeMisoeM']
+    \label{HomAeMisoeM'}
+    Soit A un anneau unitaire, M un A-module et e un idempotant de A.
+    \[ \text{Hom}_{A}(A e,M) \cong e M\]
+\end{lemma}
+\begin{proof}
+    \uses{HomAeM}
+    Soit $\phi : \text{Hom}_{A}(A e,M) \to M$ tq $\phi(\psi) = \psi(e)$\\
+    Il faut mq $\phi$ est un homomorphisme.\\
+    Soit $\psi , \sigma \in \text{Hom}_{A}(A e,M)$.\\
+    \[ \phi(\psi + \sigma) = (\psi + \sigma)(e) = \psi(e) + \sigma(e) = \phi(\psi) + \phi(\sigma) \]
+    Soit $a \in A$
+    \[ a \cdot \phi(\psi) = a \cdot \psi(e) = \phi(a \cdot \psi) \]
+    Comme $\text{Hom}_{A}(A e,M)$ est un module, par le premier théorème d'isomorphisme, \\
+    $\frac{\text{Hom}_{A}(A e,M)}{\text{ker}(\phi)} \cong \text{Im}(\phi)$\\
+    Le noyau de $\phi$ est trivial, car un unique homomorphisme peut être défini tq $\sigma(e) = 0$, car tous éléments du domaine sont de la forme ae.\\
+    Il ne reste plus qu'a montré que l'image est eM.\\
+    Par le lemme HomAeM, on a que $\text{Im}(\phi) \subset e M$.\\
+    Soit $m \in e M$. Considérons $\psi(e)=m$ tq $\psi(ae) = am$.\\
+    Il s'agit d'un homomorphisme de $A e \to M$.\\
+    Donc $\text{Im}(\phi) = e M$
+\end{proof}

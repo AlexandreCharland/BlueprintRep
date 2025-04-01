@@ -187,3 +187,26 @@ lemma bijqu {μ : YoungDiagram} {Yᵤ : YoungTableau μ} (Gᵤ : Gu Yᵤ) {YᵤI
   simp only [ne_eq, not_true_eq_false, or_self] at k
   exact injYu Yᵤ
   exact injYu Yᵤ
+
+lemma quPerm' {μ : YoungDiagram} {Yᵤ : YoungTableau μ} {Gᵤ : Gu Yᵤ} {YᵤInv : YuInv Yᵤ} :
+  ∃ (perm : Equiv.Perm (Fin μ.card)), ∀ n, perm n = qu Gᵤ YᵤInv n := by
+  have l : Function.Bijective (qu Gᵤ YᵤInv) := bijqu Gᵤ
+  rw[Function.bijective_iff_has_inverse] at l
+  obtain ⟨a, b, c⟩ := l
+  use Equiv.mk (qu Gᵤ YᵤInv) a b c
+  intro n
+  rfl
+
+noncomputable def quPerm {μ : YoungDiagram} {Yᵤ : YoungTableau μ} (Gᵤ : Gu Yᵤ) (YᵤInv : YuInv Yᵤ) : (Equiv.Perm (Fin μ.card)) := by
+  exact Equiv.ofBijective (qu Gᵤ YᵤInv) (bijqu Gᵤ)
+
+lemma qu_in_Qu {μ : YoungDiagram} {Yᵤ : YoungTableau μ} (Gᵤ : Gu Yᵤ) (YᵤInv : YuInv Yᵤ) :
+  (quPerm Gᵤ YᵤInv ) ∈ (Qu Yᵤ) := by
+  rw[quPerm,Qu]
+  simp only [Subtype.forall, Prod.forall, Subgroup.mem_mk, Set.mem_setOf_eq, Equiv.ofBijective_apply]
+  intros _ _ _ _ _ _ h
+  rw[qu, Function.Injective.eq_iff] at h
+  simp only [YuInv.inv, Subtype.mk.injEq, Prod.mk.injEq] at h
+  obtain ⟨h, _⟩ := h
+  exact h
+  exact injYu Yᵤ

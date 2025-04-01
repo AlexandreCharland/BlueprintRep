@@ -195,6 +195,55 @@
 
   </div>
 </div>
+<div class="lemma_thmwrapper theorem-style-plain" id="HomAeMisoeM'">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">4</span>
+    <span class="lemma_thmtitle">HomAeMisoeM’</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#HomAeMisoeM'">#</a>
+    
+    <a class="icon proof" href="sect0001.html#a0000000017"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>  Soit A un anneau unitaire, M un A-module et e un idempotant de A. </p>
+<div class="displaymath" id="a0000000018">
+  \[  \text{Hom}_{A}(A e,M) \cong e M \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000017">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> Soit \(\phi : \text{Hom}_{A}(A e,M) \to M\) tq \(\phi (\psi ) = \psi (e)\)<br />Il faut mq \(\phi \) est un homomorphisme.<br />Soit \(\psi , \sigma \in \text{Hom}_{A}(A e,M)\).<br /></p>
+<div class="displaymath" id="a0000000019">
+  \[  \phi (\psi + \sigma ) = (\psi + \sigma )(e) = \psi (e) + \sigma (e) = \phi (\psi ) + \phi (\sigma )  \]
+</div>
+<p> Soit \(a \in A\) </p>
+<div class="displaymath" id="a0000000020">
+  \[  a \cdot \phi (\psi ) = a \cdot \psi (e) = \phi (a \cdot \psi )  \]
+</div>
+<p> Comme \(\text{Hom}_{A}(A e,M)\) est un module, par le premier théorème d’isomorphisme, <br />\(\frac{\text{Hom}_{A}(A e,M)}{\text{ker}(\phi )} \cong \text{Im}(\phi )\)<br />Le noyau de \(\phi \) est trivial, car un unique homomorphisme peut être défini tq \(\sigma (e) = 0\), car tous éléments du domaine sont de la forme ae.<br />Il ne reste plus qu’a montré que l’image est eM.<br />Par le lemme HomAeM, on a que \(\text{Im}(\phi ) \subset e M\).<br />Soit \(m \in e M\). Considérons \(\psi (e)=m\) tq \(\psi (ae) = am\).<br />Il s’agit d’un homomorphisme de \(A e \to M\).<br />Donc \(\text{Im}(\phi ) = e M\) </p>
+
+  </div>
+</div>
 
 </div> <!--main-text -->
 </div> <!-- content-wrapper -->
