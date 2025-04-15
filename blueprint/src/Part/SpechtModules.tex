@@ -32,7 +32,7 @@
     $\forall x \in \mathbb{C}[S_{n}]$, $a_{\mu} x b_{\mu} = l_{\mu}(x) c_{\mu}$
 \end{lemma}
 \begin{proof}
-    \uses{No2FromSameColToSameRow}
+    \uses{No2FromSameColToSameRow,sectPuQu}
     Soit x $\in \mathbb{C}[S_{n}]$.\\
     x est de la forme $\sum_{g \in S_n} a_g g$. Examinons se qu'il se passe pour différent g.\\
     Si g $\in P_{\mu} Q_{\mu}$, alors $\exists$ p $\in P_{\mu}$ et q $\in Q_{\mu}$ tq g=pq\\
@@ -90,7 +90,7 @@
     $\forall \mu$ partition de n, $V_{\mu}$ est toute les représentations irréductibles de $S_n$
 \end{theorem}
 \begin{proof}
-    \uses{HomAeMisoeM, CuPropIdempotent, SmallerImpZero, LinearTransformation}
+    \uses{HomAeMisoeM, CuPropIdempotent, SmallerImpZero, CuIdempotent}
     Soit $\mu, \lambda$ deux partitions de n et sans perte de généralité, $\mu \geq \lambda$\\
     \[ \text{Hom}_{\mathbb{C}[S_{n}]}(V_{\mu}, V_{\lambda}) = \text{Hom}_{\mathbb{C}[S_{n}]}(\mathbb{C}[S_{n}]c_{\mu}, \mathbb{C}[S_{n}]c_{\lambda}) \cong c_{\mu}\mathbb{C}[S_{n}]c_{\lambda}  \]
     Si $\mu > \lambda$ alors $c_{\mu}\mathbb{C}[S_{n}]c_{\lambda} = 0$\\

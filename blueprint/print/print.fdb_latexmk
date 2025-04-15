@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1743521591 "print.tex" "/Users/alexandrecharland/Desktop/Université/Session8/Projet/IFT3150/BlueprintRep/blueprint/print/print.pdf" "print" 1743521592 0
-  "/Users/alexandrecharland/Desktop/Université/Session8/Projet/IFT3150/BlueprintRep/blueprint/print/print.aux" 1743521592 2769 8ee81050534f6c26e51b0ef39b20238b "pdflatex"
-  "/Users/alexandrecharland/Desktop/Université/Session8/Projet/IFT3150/BlueprintRep/blueprint/print/print.out" 1743521592 284 84d4eec38642fb147f188ac4c2c08238 "pdflatex"
+["pdflatex"] 1744754387 "print.tex" "/Users/alexandrecharland/Desktop/Université/Session8/Projet/IFT3150/BlueprintRep/blueprint/print/print.pdf" "print" 1744754389 0
+  "/Users/alexandrecharland/Desktop/Université/Session8/Projet/IFT3150/BlueprintRep/blueprint/print/print.aux" 1744754389 2641 7dccb37dc75f0025f692eea9248b19c9 "pdflatex"
+  "/Users/alexandrecharland/Desktop/Université/Session8/Projet/IFT3150/BlueprintRep/blueprint/print/print.out" 1744754389 284 84d4eec38642fb147f188ac4c2c08238 "pdflatex"
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -86,9 +86,9 @@
   "/usr/local/texlive/2023/texmf-dist/web2c/texmf.cnf" 1677365944 40745 87bb86a62d462f93a1efc6b0c65c872e ""
   "/usr/local/texlive/2023/texmf-var/web2c/xetex/xelatex.fmt" 1703433719 10502840 2cbc2de438c7b16a91221aea8de821b2 ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
-  "Part/Module.tex" 1743282060 3867 d9c9881d0a37bc1e1c492c9a412d794c ""
-  "Part/SpechtModules.tex" 1743514742 5616 e55ea28c89a9776a1cfb020d1bce3fe8 ""
-  "Part/Young.tex" 1742331939 8244 2fbe5e2912e3c90dc25619eaf41a7d7a ""
+  "Part/Module.tex" 1743540407 1565 31051c93f0c7142c6237895ff465e29e ""
+  "Part/SpechtModules.tex" 1743524107 5617 1283cdb8be90a73fcbf5de7253f01374 ""
+  "Part/Young.tex" 1744754376 8273 b134970be5744c2dbd9702d85b817fd5 ""
   "content.tex" 1742432610 65 22585b81cb6dbec0bc6139add8df16cd ""
   "macros/common.tex" 1739143782 820 60fafcc3aa944a5e60030581a943ef6b ""
   "macros/print.tex" 1739143782 1101 87627b2ec24fef68edc71c13f43f7bab ""

@@ -51,19 +51,19 @@
 
 <div class="main-text">
 <h1 id="a0000000002">1 Module</h1>
-<div class="lemma_thmwrapper theorem-style-plain" id="MdirectSumIdemp">
+<div class="lemma_thmwrapper theorem-style-plain" id="HomAeM">
   <div class="lemma_thmheading">
     <span class="lemma_thmcaption">
     Lemma
     </span>
     <span class="lemma_thmlabel">1</span>
-    <span class="lemma_thmtitle">MdirectSumIdemp</span>
+    <span class="lemma_thmtitle">HomAeM</span>
     <div class="thm_header_extras">
 
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0001.html#MdirectSumIdemp">#</a>
+    <a class="icon proof" href="sect0001.html#HomAeM">#</a>
     
     <a class="icon proof" href="sect0001.html#a0000000005"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
@@ -73,9 +73,9 @@
         </div>
   </div>
   <div class="lemma_thmcontent">
-  <p>  Soit A un anneau unitaire et \(e \in A\) un idempotant de A. </p>
+  <p>  Soit A un anneau unitaire, M un A-module et e un idempotant de A. </p>
 <div class="displaymath" id="a0000000006">
-  \[  A = e A \oplus (1-e) A  \]
+  \[  \forall \phi \in \text{Hom}_{A}(Ae,M), \exists m \in e M, \phi (e)=m \]
 </div>
 
   </div>
@@ -88,61 +88,11 @@
     <span class="expand-proof">▶</span>
   </div>
   <div class="proof_content">
-  <p>Il suffit de montré que \(\forall m \in e A\) et \(\forall n \in (1-e) A\) tq \(m+n=0 \Rightarrow m=n=0\).<br />Soit m,n tq décris plus haut.<br />Comme \(m \in e A, \exists a \in A\) tq \(e a = m\).<br />Comme \(n \in (1-e) A, \exists b \in A\) tq \((1-e) b = n\).<br /></p>
+  <p>Soit \( n \in M\) tq \(\phi (e)=n\) </p>
 <div class="displaymath" id="a0000000007">
-  \[  m+n=e a + (1-e) b = 0 \]
-</div>
-<div class="displaymath" id="a0000000008">
-  \[  e \cdot (e a + (1-e) b) = e^{2} a + (e - e^{2}) b = e a = e 0 \Rightarrow m=0 \]
-</div>
-<div class="displaymath" id="a0000000009">
-  \[  0+n=0 \Rightarrow n=0 \]
-</div>
-
-  </div>
-</div>
-<div class="lemma_thmwrapper theorem-style-plain" id="HomAeM">
-  <div class="lemma_thmheading">
-    <span class="lemma_thmcaption">
-    Lemma
-    </span>
-    <span class="lemma_thmlabel">2</span>
-    <span class="lemma_thmtitle">HomAeM</span>
-    <div class="thm_header_extras">
-
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0001.html#HomAeM">#</a>
-    
-    <a class="icon proof" href="sect0001.html#a0000000010"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
-</a>
-    
-    
-    
-        </div>
-  </div>
-  <div class="lemma_thmcontent">
-  <p>  Soit A un anneau unitaire, M un A-module et e un idempotant de A. </p>
-<div class="displaymath" id="a0000000011">
-  \[  \forall \phi \in \text{Hom}_{A}(Ae,M), \exists m \in e M, \phi (e)=m \]
-</div>
-
-  </div>
-</div>
-<div class="proof_wrapper" id="a0000000010">
-  <div class="proof_heading">
-    <span class="proof_caption">
-    Proof
-    </span>
-    <span class="expand-proof">▶</span>
-  </div>
-  <div class="proof_content">
-  <p> Soit \( n \in M\) tq \(\phi (e)=n\) </p>
-<div class="displaymath" id="a0000000012">
   \[  \phi (e) = n \Rightarrow e \phi (e) = \phi (e) = e n \Rightarrow n = e n  \]
 </div>
-<p> Par le lemme MdirectSumIdemp, on a que \(A = e A \oplus (1-e) A\)<br />\(\exists ! m,a \in A\) tq \(n = e m + (1-e) b\).<br />\(e m + (1-e) b = n = e n = e \cdot (e m + (1-e) b) = e^{2} m + (e - e^{2}) b = e m\)<br />Donc \(b = 0 \Rightarrow n= em \Rightarrow n \in e M\). </p>
+<p> Donc \( n \in e M\) </p>
 
   </div>
 </div>
@@ -151,7 +101,7 @@
     <span class="lemma_thmcaption">
     Lemma
     </span>
-    <span class="lemma_thmlabel">3</span>
+    <span class="lemma_thmlabel">2</span>
     <span class="lemma_thmtitle">HomAeMisoeM</span>
     <div class="thm_header_extras">
 
@@ -160,7 +110,7 @@
 
     <a class="icon proof" href="sect0001.html#HomAeMisoeM">#</a>
     
-    <a class="icon proof" href="sect0001.html#a0000000013"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0001.html#a0000000008"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -169,62 +119,13 @@
   </div>
   <div class="lemma_thmcontent">
   <p>  Soit A un anneau unitaire, M un A-module et e un idempotant de A. </p>
-<div class="displaymath" id="a0000000014">
+<div class="displaymath" id="a0000000009">
   \[  \text{Hom}_{A}(A e,M) \cong e M \]
 </div>
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000013">
-  <div class="proof_heading">
-    <span class="proof_caption">
-    Proof
-    </span>
-    <span class="expand-proof">▶</span>
-  </div>
-  <div class="proof_content">
-  <p> Soit \(m \in e M\), \(\psi _{m} : A e \to M\) tq \(\psi _{m}(a) = a m\)<br />Il faut montré que \(\psi _{m}\) est un homomorphisme.<br />Soit \(a,b \in A e\).<br /></p>
-<div class="displaymath" id="a0000000015">
-  \[  \psi _{m}(a+b) = (a+b)m = a m + b m = \psi _{m}(a) + \psi _{m}(b)  \]
-</div>
-<p> Soit \(\phi : e M \to (A e \to M)\) tq \(\phi (m) = \psi _{m}\)<br />On a que \(\phi \) est un homomorphisme, car<br />\(\phi (m+n) = \psi _{m+n}\).<br />\(\forall a \in A\), \(\psi _{m+n}(a) = a (m+n) = (a m) + (a n) = \psi _{m}(a)+\psi _{n}(a)\)<br />Donc \(\psi _{m+n} = \psi _{m}+\psi _{n} \Rightarrow \phi (m+n) = \phi (m)+\phi (n)\)<br />Par le premier théorème d’isomorphisme de module, \(\frac{e M}{\text{ker}(\phi )} \cong \text{Im}(\phi )\)<br />Seul \(\phi (0)\) envoit à l’identité de \(\text{Hom}_{A}(A,M)\), donc le noyau est trivial.<br />La dernière chose a montré est que l’image de \(\phi \) est \(\text{Hom}_{A}(A e,M)\).<br />Soit \(\sigma \in \text{Hom}_{A}(A e,M)\).<br />Par le lemme HomAeM, \(\exists m \in eM\) tq \(\sigma (e) = m\).<br />Montrons que \(\sigma = \phi (m) = \psi _{m}\)<br />Soit \(a \in Ae\) et \(b \in A\) tq \(a= b e\)<br /></p>
-<div class="displaymath" id="a0000000016">
-  \[  \sigma (a) = \sigma (b e) = \sigma (b e^{2}) = b e \cdot \sigma (e) = b e m = a m = \psi _{m}(a)  \]
-</div>
-<p> Donc \(\sigma \in \text{Im}(\phi )\) </p>
-
-  </div>
-</div>
-<div class="lemma_thmwrapper theorem-style-plain" id="HomAeMisoeM'">
-  <div class="lemma_thmheading">
-    <span class="lemma_thmcaption">
-    Lemma
-    </span>
-    <span class="lemma_thmlabel">4</span>
-    <span class="lemma_thmtitle">HomAeMisoeM’</span>
-    <div class="thm_header_extras">
-
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0001.html#HomAeMisoeM'">#</a>
-    
-    <a class="icon proof" href="sect0001.html#a0000000017"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
-</a>
-    
-    
-    
-        </div>
-  </div>
-  <div class="lemma_thmcontent">
-  <p>  Soit A un anneau unitaire, M un A-module et e un idempotant de A. </p>
-<div class="displaymath" id="a0000000018">
-  \[  \text{Hom}_{A}(A e,M) \cong e M \]
-</div>
-
-  </div>
-</div>
-<div class="proof_wrapper" id="a0000000017">
+<div class="proof_wrapper" id="a0000000008">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -233,11 +134,11 @@
   </div>
   <div class="proof_content">
   <p> Soit \(\phi : \text{Hom}_{A}(A e,M) \to M\) tq \(\phi (\psi ) = \psi (e)\)<br />Il faut mq \(\phi \) est un homomorphisme.<br />Soit \(\psi , \sigma \in \text{Hom}_{A}(A e,M)\).<br /></p>
-<div class="displaymath" id="a0000000019">
+<div class="displaymath" id="a0000000010">
   \[  \phi (\psi + \sigma ) = (\psi + \sigma )(e) = \psi (e) + \sigma (e) = \phi (\psi ) + \phi (\sigma )  \]
 </div>
 <p> Soit \(a \in A\) </p>
-<div class="displaymath" id="a0000000020">
+<div class="displaymath" id="a0000000011">
   \[  a \cdot \phi (\psi ) = a \cdot \psi (e) = \phi (a \cdot \psi )  \]
 </div>
 <p> Comme \(\text{Hom}_{A}(A e,M)\) est un module, par le premier théorème d’isomorphisme, <br />\(\frac{\text{Hom}_{A}(A e,M)}{\text{ker}(\phi )} \cong \text{Im}(\phi )\)<br />Le noyau de \(\phi \) est trivial, car un unique homomorphisme peut être défini tq \(\sigma (e) = 0\), car tous éléments du domaine sont de la forme ae.<br />Il ne reste plus qu’a montré que l’image est eM.<br />Par le lemme HomAeM, on a que \(\text{Im}(\phi ) \subset e M\).<br />Soit \(m \in e M\). Considérons \(\psi (e)=m\) tq \(\psi (ae) = am\).<br />Il s’agit d’un homomorphisme de \(A e \to M\).<br />Donc \(\text{Im}(\phi ) = e M\) </p>

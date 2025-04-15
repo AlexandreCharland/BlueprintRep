@@ -48,10 +48,12 @@ def Pu {μ : YoungDiagram} (Yᵤ : YoungTableau μ) : Subgroup (Equiv.Perm (Fin 
     rw[Eq.comm]
     exact h1 h2
 
-noncomputable instance PuCardFinite {μ : YoungDiagram} (Yᵤ : YoungTableau μ) : Fintype ↥(Pu Yᵤ) := by
+noncomputable instance PuCardFinite {μ : YoungDiagram} (Yᵤ : YoungTableau μ) :
+  Fintype ↥(Pu Yᵤ) := by
   exact Fintype.ofFinite ↥(Pu Yᵤ)
 
-noncomputable def PuCard {μ : YoungDiagram} (Yᵤ : YoungTableau μ) := Fintype.card ↥(Pu Yᵤ)
+noncomputable def PuCard {μ : YoungDiagram} (Yᵤ : YoungTableau μ) :=
+  Fintype.card ↥(Pu Yᵤ)
 
 def Qu {μ : YoungDiagram} (Yᵤ : YoungTableau μ) : Subgroup (Equiv.Perm (Fin μ.card)) where
   carrier := {x : (Equiv.Perm (Fin μ.card)) | ∀ {i j : μ}, (x (Yᵤ.entry i) = Yᵤ.entry j) → i.val.fst = j.val.fst}
@@ -75,10 +77,12 @@ def Qu {μ : YoungDiagram} (Yᵤ : YoungTableau μ) : Subgroup (Equiv.Perm (Fin 
     rw[Eq.comm]
     exact h1 h2
 
-noncomputable instance QuCardFinite {μ : YoungDiagram} (Yᵤ : YoungTableau μ) : Fintype ↥(Qu Yᵤ) := by
+noncomputable instance QuCardFinite {μ : YoungDiagram} (Yᵤ : YoungTableau μ) :
+  Fintype ↥(Qu Yᵤ) := by
   exact Fintype.ofFinite ↥(Qu Yᵤ)
 
-noncomputable def QuCard {μ : YoungDiagram} (Yᵤ : YoungTableau μ) := Fintype.card ↥(Qu Yᵤ)
+noncomputable def QuCard {μ : YoungDiagram} (Yᵤ : YoungTableau μ) :=
+  Fintype.card ↥(Qu Yᵤ)
 
 lemma sectPuQu {μ : YoungDiagram} (Yᵤ : YoungTableau μ):
   (Pu Yᵤ).carrier ∩ (Qu Yᵤ).carrier = {↑1} := by
@@ -101,7 +105,8 @@ lemma sectPuQu {μ : YoungDiagram} (Yᵤ : YoungTableau μ):
   rw[← h] at hk
   rw[Equiv.Perm.coe_one, id_eq, ← hj, hk]
 
-def PuQu (μ : YoungDiagram) (Yᵤ : YoungTableau μ) := {g : (Equiv.Perm (Fin μ.card)) | ∃ p ∈ (Pu Yᵤ), ∃ q ∈ (Qu Yᵤ), g = p ∘ q}
+def PuQu (μ : YoungDiagram) (Yᵤ : YoungTableau μ) :=
+  {g : (Equiv.Perm (Fin μ.card)) | ∃ p ∈ (Pu Yᵤ), ∃ q ∈ (Qu Yᵤ), g = p ∘ q}
 
 structure Gu {μ : YoungDiagram} (Yᵤ : YoungTableau μ) where
   g : (Fin μ.card) → (Fin μ.card)
@@ -134,38 +139,39 @@ lemma preImGu' {μ : YoungDiagram} {Yᵤ : YoungTableau μ} (Gᵤ : Gu Yᵤ) (n 
     exact (bijGu Gᵤ)
   exact h n
 
-structure YuInv {μ : YoungDiagram} (Yᵤ : YoungTableau μ) where
-  entry : (Fin μ.card) → μ.cells
-  inv : ∀ {i : μ.cells}, entry (Yᵤ.entry i) = i
-  inv' : ∀ {n : (Fin μ.card)}, Yᵤ.entry (entry n) = n
+def YuInv {μ : YoungDiagram} (Yᵤ : YoungTableau μ) :=
+  Fintype.bijInv (bijYu Yᵤ)
 
-lemma bijYuInv {μ : YoungDiagram} {Yᵤ : YoungTableau μ} (YᵤInv : YuInv Yᵤ) :
-  Function.Bijective YᵤInv.entry := by
-  rw[Function.bijective_iff_has_inverse]
-  exists Yᵤ.entry
-  rw[Function.leftInverse_iff_comp, Function.rightInverse_iff_comp, funext_iff, funext_iff]
-  constructor
-  intro _
-  rw[Function.comp_apply, YᵤInv.inv', id_eq]
-  intro _
-  rw[Function.comp_apply, YᵤInv.inv, id_eq]
+lemma leftInv {α β : Type} [Fintype α] [Fintype β] [DecidableEq β] (f : α → β) (hf : Function.Bijective f) :
+  ∀ (i : α), ((Fintype.bijInv hf) ∘ f) i = i := by
+  sorry
 
-lemma preImYuInv {μ : YoungDiagram} {Yᵤ : YoungTableau μ} (YᵤInv : YuInv Yᵤ) (i : μ) :
-  ∃! (n : Fin μ.card), YᵤInv.entry n = i := by
-  have h : ∀ (i' : μ), ∃! n', YᵤInv.entry n' = i' := by
+lemma bijYuInv {μ : YoungDiagram} {Yᵤ : YoungTableau μ} :
+  Function.Bijective (YuInv Yᵤ) := by
+  rw[YuInv]
+  exact Fintype.bijective_bijInv (bijYu Yᵤ)
+
+lemma preImYuInv {μ : YoungDiagram} (Yᵤ : YoungTableau μ) (i : μ) :
+  ∃! (n : Fin μ.card), YuInv Yᵤ n = i := by
+  have h : ∀ (i' : μ), ∃! n', YuInv Yᵤ n' = i' := by
     rw[← Function.bijective_iff_existsUnique _]
-    exact (bijYuInv YᵤInv)
+    exact (bijYuInv)
   exact h i
 
-lemma staysInY {μ : YoungDiagram} {Yᵤ : YoungTableau μ} (Gᵤ : Gu Yᵤ) {YᵤInv : YuInv Yᵤ} (n : Fin μ.card) :
-  ((YᵤInv.entry n).val.fst, ((YᵤInv.entry) (Gᵤ.g n)).val.snd) ∈ μ := by
+lemma YuInvYu {μ : YoungDiagram} {Yᵤ : YoungTableau μ} (i : μ) :
+  (YuInv Yᵤ) (Yᵤ.entry i) = i := by
+  exact leftInv _ _ _
+
+lemma staysInY {μ : YoungDiagram} {Yᵤ : YoungTableau μ} (Gᵤ : Gu Yᵤ) (n : Fin μ.card) :
+  ((YuInv Yᵤ n).val.fst, ((YuInv Yᵤ) (Gᵤ.g n)).val.snd) ∈ μ := by
   --Aucune idée pourquoi c'est vrai, autre que ça doit l'être sinon la preuve fonctionne pas
   sorry
 
-def qu {μ : YoungDiagram} {Yᵤ : YoungTableau μ} (Gᵤ : Gu Yᵤ) (YᵤInv : YuInv Yᵤ) (n : Fin μ.card) := Yᵤ.entry ⟨((YᵤInv.entry n).val.fst, (YᵤInv.entry (Gᵤ.g n)).val.snd), staysInY Gᵤ n⟩
+def qu {μ : YoungDiagram} {Yᵤ : YoungTableau μ} (Gᵤ : Gu Yᵤ) (n : Fin μ.card) :=
+  Yᵤ.entry ⟨((YuInv Yᵤ n).val.fst, (YuInv Yᵤ (Gᵤ.g n)).val.snd), staysInY Gᵤ n⟩
 
-lemma bijqu {μ : YoungDiagram} {Yᵤ : YoungTableau μ} (Gᵤ : Gu Yᵤ) {YᵤInv : YuInv Yᵤ} :
-  Function.Bijective (qu Gᵤ YᵤInv) := by
+lemma bijqu {μ : YoungDiagram} {Yᵤ : YoungTableau μ} (Gᵤ : Gu Yᵤ) :
+  Function.Bijective (qu Gᵤ) := by
   rw [Fintype.bijective_iff_injective_and_card, Function.Injective]
   by_contra contra
   simp only [not_forall, and_true] at contra
@@ -174,39 +180,47 @@ lemma bijqu {μ : YoungDiagram} {Yᵤ : YoungTableau μ} (Gᵤ : Gu Yᵤ) {YᵤI
   obtain ⟨b', hb, _⟩:= preImYu Yᵤ b
   rw [← ha, ← hb, Function.Injective.eq_iff, ← ne_eq] at contra
   rw[qu, qu, Function.Injective.eq_iff, ← ha, ← hb] at h
-  simp only [YᵤInv.inv, YᵤInv.inv, Subtype.mk.injEq, Prod.mk.injEq] at h
+  simp only [YuInvYu, YuInvYu, Subtype.mk.injEq, Prod.mk.injEq] at h
   obtain ⟨hx, hy⟩:=h
   obtain ⟨a'', ha', _⟩:= preImYu Yᵤ (Gᵤ.g (Yᵤ.entry a'))
   obtain ⟨b'', hb', _⟩:= preImYu Yᵤ (Gᵤ.g (Yᵤ.entry b'))
   rw[eq_comm] at ha'
   rw[eq_comm] at hb'
   rw[ha', hb'] at hy
-  simp only [YᵤInv.inv, YᵤInv.inv] at hy
+  simp only [YuInvYu, YuInvYu] at hy
   have k : ((a'.val.fst ≠ b'.val.fst) ∨ (a''.val.snd ≠ b''.val.snd)) := by exact Gᵤ.rowToCol ⟨ contra, ha', hb'⟩
   rw[hx, hy] at k
   simp only [ne_eq, not_true_eq_false, or_self] at k
   exact injYu Yᵤ
   exact injYu Yᵤ
 
-lemma quPerm' {μ : YoungDiagram} {Yᵤ : YoungTableau μ} {Gᵤ : Gu Yᵤ} {YᵤInv : YuInv Yᵤ} :
-  ∃ (perm : Equiv.Perm (Fin μ.card)), ∀ n, perm n = qu Gᵤ YᵤInv n := by
-  have l : Function.Bijective (qu Gᵤ YᵤInv) := bijqu Gᵤ
+lemma quPerm' {μ : YoungDiagram} {Yᵤ : YoungTableau μ} {Gᵤ : Gu Yᵤ} :
+  ∃ (perm : Equiv.Perm (Fin μ.card)), ∀ n, perm n = qu Gᵤ n := by
+  have l : Function.Bijective (qu Gᵤ) := bijqu Gᵤ
   rw[Function.bijective_iff_has_inverse] at l
   obtain ⟨a, b, c⟩ := l
-  use Equiv.mk (qu Gᵤ YᵤInv) a b c
+  use Equiv.mk (qu Gᵤ) a b c
   intro n
   rfl
 
-noncomputable def quPerm {μ : YoungDiagram} {Yᵤ : YoungTableau μ} (Gᵤ : Gu Yᵤ) (YᵤInv : YuInv Yᵤ) : (Equiv.Perm (Fin μ.card)) := by
-  exact Equiv.ofBijective (qu Gᵤ YᵤInv) (bijqu Gᵤ)
+noncomputable def quPerm {μ : YoungDiagram} {Yᵤ : YoungTableau μ} (Gᵤ : Gu Yᵤ) :
+  (Equiv.Perm (Fin μ.card)) := by
+  exact Equiv.ofBijective (qu Gᵤ) (bijqu Gᵤ)
 
-lemma qu_in_Qu {μ : YoungDiagram} {Yᵤ : YoungTableau μ} (Gᵤ : Gu Yᵤ) (YᵤInv : YuInv Yᵤ) :
-  (quPerm Gᵤ YᵤInv ) ∈ (Qu Yᵤ) := by
+lemma quPerm_in_Qu {μ : YoungDiagram} {Yᵤ : YoungTableau μ} (Gᵤ : Gu Yᵤ) :
+  (quPerm Gᵤ) ∈ (Qu Yᵤ) := by
   rw[quPerm,Qu]
   simp only [Subtype.forall, Prod.forall, Subgroup.mem_mk, Set.mem_setOf_eq, Equiv.ofBijective_apply]
   intros _ _ _ _ _ _ h
   rw[qu, Function.Injective.eq_iff] at h
-  simp only [YuInv.inv, Subtype.mk.injEq, Prod.mk.injEq] at h
+  simp only [YuInvYu, Subtype.mk.injEq, Prod.mk.injEq] at h
   obtain ⟨h, _⟩ := h
   exact h
   exact injYu Yᵤ
+
+def quInv {μ : YoungDiagram} {Yᵤ : YoungTableau μ} (Gᵤ : Gu Yᵤ) :=
+  Fintype.bijInv (bijqu Gᵤ)
+
+lemma quInvqu {μ : YoungDiagram} {Yᵤ : YoungTableau μ} (Gᵤ : Gu Yᵤ) (n : Fin μ.card) :
+  (quInv Gᵤ) ((qu Gᵤ) n) = n := by
+  exact leftInv _ _ _
