@@ -49,7 +49,7 @@
     \lean{Pu}
     \leanok
     $P_{\mu}$ est un sous groupe de $S_{n}$, défini de la façon suivante:\\
-    Un élément de $P_{\mu}$ permute les entré du YoungDiagram si ils sont sur la même rangé.
+    Un élément de $P_{\mu}$ permute les entré du YoungDiagram s'ils sont sur la même rangé.
 \end{definition}
 \begin{proof}
     \uses{injYu, preImYu}
@@ -88,7 +88,7 @@
     \lean{Qu}
     \leanok
     $Q_{\mu}$ est un sous groupe de $S_{n}$, défini de la façon suivante:\\
-    Un élément de $Q_{\mu}$ permute les entré du YoungDiagram si ils sont sur la même colonne.
+    Un élément de $Q_{\mu}$ permute les entré du YoungDiagram s'ils sont sur la même colonne.
 \end{definition}
 \begin{proof}
     \uses{injYu, preImYu}
@@ -133,13 +133,13 @@
     $P_{\mu}Q_{\mu} := \{g : [0,n-1] \to [0,n-1] | \exists p \in P_{\mu} \land \exists q \in Q_{\mu}, g = p q \}$
 \end{definition}
 
-\begin{definition}[Gu]
-    \label{Gu}
-    \lean{Gu}
+\begin{definition}[rowToCol]
+    \label{rowToCol}
+    \lean{rowToCol}
     \leanok
     \uses{YoungTableau}
-    $G_{\mu}$ est une permutation de [0, n-1] tq
-    \[ \forall i,j,k,l \in \mu, ((i \neq j) \land (G_{\mu} \circ Y_{\mu} (i) = Y_{\mu} (k)) \land (G_{\mu} \circ Y_{\mu} (j) = Y_{\mu} (l))) → ((i.x \neq j.x) \lor (k.y \neq l.y)) \]
+    Soit $g$ est une permutation de [0, n-1]. Elle est rowToCol si
+    \[ \forall i,j,k,l \in \mu, ((i \neq j) \land (g \circ Y_{\mu} (i) = Y_{\mu} (k)) \land (g \circ Y_{\mu} (j) = Y_{\mu} (l))) → ((i.x \neq j.x) \lor (k.y \neq l.y)) \]
 \end{definition}
 
 \begin{definition}[YuInv]
@@ -155,7 +155,8 @@
     \lean{staysInY}
     \leanok
     \uses{Gu, YuInv}
-    \[ \forall m \in [0,n-1], (Y_{\mu}^{-1}(m).x,Y_{\mu}^{-1}(G_{\mu}(m)).y) \in \mu \]
+    Soit g une permutation rowToCol,
+    \[ \forall m \in [0,n-1], (Y_{\mu}^{-1}(m).x,Y_{\mu}^{-1}(g(m)).y) \in \mu \]
 \end{lemma}
 \begin{proof}
     No idea...
@@ -167,14 +168,37 @@
     \lean{qu}
     \leanok
     \uses{staysInY}
+    Soit g une permutation rowToCol,\\
     $q_{\mu}$ est une permutation de [0, n-1] défini comme
-    \[ q_{\mu}(m)= Y_{\mu}((Y_{\mu}^{-1}(m)).x,(Y_{\mu}^{-1} \circ G_{\mu}(m)).y) \]
+    \[ q_{\mu}(m)= Y_{\mu}((Y_{\mu}^{-1}(m)).x,(Y_{\mu}^{-1} \circ g(m)).y) \]
 \end{definition}
 \begin{proof}
     \leanok
     Par le lemme staysInY, on sait que la fonction $q_{\mu}$ est bien défini.\\
     Il ne reste plus qu'a montré que $q_{\mu}$ est une bijection.\\
-    TODO
+    Comme le domaine et codomaine sont de même taille, il suffit de montrer que $q_{\mu}$ est injectif.\\
+    Supposons le contraire, $\exists m, m' \in [0,n-1]$ tq $q_{\mu}(m) = q_{\mu}(m') \land m \neq m'$.\\
+    $\exists i, j \in \mu$, tq $Y_{\mu}(i)=m$ et $Y_{\mu}(j)=m'$.\\
+    Comme $Y_{\mu}$ est injective, on a que $i \neq j$.\\
+    $\exists k, l \in \mu$, tq $Y_{\mu}(k)=g(Y_{\mu}(i))$ et $Y_{\mu}(l)=g(Y_{\mu}(j))$.\\
+    \[ q_{\mu}(Y_{\mu}(i)) = q_{\mu}(Y_{\mu}(j)) \Rightarrow \]
+    \[ Y_{\mu}((Y_{\mu}^{-1}(Y_{\mu}(i))).x,(Y_{\mu}^{-1} \circ g(Y_{\mu}(i))).y) = Y_{\mu}((Y_{\mu}^{-1}(Y_{\mu}(j))).x,(Y_{\mu}^{-1} \circ g(Y_{\mu}(j))).y) \]
+    \[ i.x = j.x \land Y_{\mu}^{-1} \circ g(Y_{\mu}(i)).y = Y_{\mu}^{-1} \circ g(Y_{\mu}(j)).y \Rightarrow Y_{\mu}^{-1} \circ Y_{\mu}(k).y = Y_{\mu}^{-1} \circ Y_{\mu}(l).y \]
+    \[ i.x = j.x \land k.y = l.y \]
+    Donc comme $g$ est rowToCol $i \neq j \land Y_{\mu}(k)=g(Y_{\mu}(i)) \land Y_{\mu}(l)=g(Y_{\mu}(j))$ on a que $i.x \neq j.x \lor k.y \neq l.y$.\\
+    Contradiction, donc $q_{\mu}$ est injectif et donc bijectif.
+\end{proof}
+
+\begin{lemma}[quInQu]
+    \label{quInQu}
+    \lean{quPermInQu}
+    \leanok
+    \uses{qu}
+    \[ q_{\mu} \in Q_{\mu} \]
+\end{lemma}
+\begin{proof}
+    \leanok
+    Par construction de $q_{\mu}$, la valeur en x ne change pas après l'application.
 \end{proof}
 
 \begin{definition}[quInv]
@@ -187,8 +211,11 @@
 
 \begin{lemma}[staysInX]
     \label{staysInX}
+    \lean{staysInX}
+    \leanok
     \uses{quInv}
-    \[ \forall m \in [0,n-1], ((Y_{\mu}^{-1} \circ G_{\mu} \circ q_{\mu}^{-1}(m)).x, (Y_{\mu}^{-1}(m)).y) \in \mu \]
+    Soit g une permutation rowToCol,
+    \[ \forall m \in [0,n-1], ((Y_{\mu}^{-1} \circ g \circ q_{\mu}^{-1}(m)).x, (Y_{\mu}^{-1}(m)).y) \in \mu \]
 \end{lemma}
 \begin{proof}
     No idea...
@@ -197,41 +224,72 @@
 
 \begin{definition}[pu]
     \label{pu}
+    \lean{pu}
+    \leanok
     \uses{staysInX}
-    $p_{\mu}$ est une permutation de [0,n-1] défini comme
-    \[ q_{\mu}(m)= Y_{\mu}(Y_{\mu}^{-1}(m).x,Y_{\mu}^{-1}(G_{\mu}(m)).y) \]
+    Soit g une permutation rowToCol,\\
+    $p_{\mu}$ est une permutation de [0, n-1] défini comme
+    \[ p_{\mu}(m)= Y_{\mu}((Y_{\mu}^{-1} \circ g \circ q^{-1}(m)).x,(Y_{\mu}^{-1}(m)).y) \]
 \end{definition}
 \begin{proof}
-    TODO
-    
+    \leanok
+    La preuve de la bijection requiert un lemme avant
 \end{proof}
 
-\begin{lemma}[No2FromSameColToSameRow]
-    \label{No2FromSameColToSameRow}
-    \uses{PuQu}
-    Soit $g : [0,n-1] \to [0,n-1]$ une fonction bijective et $Y_{\mu}$ un YoungTableau.\\
-    Si $\forall i, j, k, l \in \mu, i \neq j, g(Y_{\mu}(i)) = Y_{\mu}(k), g(Y_{\mu}(j)) = Y_{\mu}(l)$ alors $i.x \neq j.x \lor k.y \neq l.y$.\\
-    Alors $g \in P_{\mu}Q_{\mu}$
+\begin{lemma}[puqug]
+    \label{puqug}
+    \lean{puqug}
+    \leanok
+    \uses{pu}
+    Soit g une permutation rowToCol,\\
+    \[ g = p_{\mu} \circ q_{\mu} \]
 \end{lemma}
 \begin{proof}
-    \uses{pu}
-    Posons $q(Y_{\mu}(i)) := Y_{\mu}(i.x,(Y_{\mu}^{-1} \circ g \circ Y_{\mu}(i)).y)$.\\
-    Par le lemme qWellDefined, nous avons que q est bien définit.\\
-    Montrons que $q \in Q_{\mu}$\\
-    Si q n'est pas injectif alors $\exists k, l \in \mu$ tq $k \neq l, q(Y_{\mu}(k))=q(Y_{\mu}(l))$.\\
-    Donc $Y_{\mu}((Y_{\mu}^{-1} \circ g \circ Y_{\mu}(k)).x,k.y) = Y_{\mu}((Y_{\mu}^{-1} \circ g \circ Y_{\mu}(l)).x,l.y)$.\\
-    Comme $Y_{\mu}^{-1} \circ g \circ Y_{\mu}$ est bijectif, $\exists! i,j \in \mu$ tq $i \neq j, Y_{\mu}^{-1} \circ g Y_{\mu}(k)=i, Y_{\mu}^{-1} \circ g Y_{\mu}(l)=j$.\\
-    Donc $\exists i, j, k, l \in \mu, i \neq j, g(Y_{\mu}(i)) = Y_{\mu}(k), g(Y_{\mu}(j)) = Y_{\mu}(l)$ et $i.x = j.x \land k.y = l.y$.\\
-    Contradiction d'hypothèse.\\
-    Donc $q$ est injectif. De plus comme le domaine et codomaine sont finis et de même taille, on a que $q$ est une bijection. Ainsi $q \in Q_{\mu}$.\\
-    \\
-    Posons $p(Y_{\mu}(i)) := Y_{\mu}((Y_{\mu}^{-1} \circ g \circ q^{-1} \circ Y_{\mu}(i)).x,i.y)$.\\
-    On remarque $p \circ q = g$. Soit $i \in \mu$. $\exists j \in \mu$ tq $g(Y_{\mu}(i))=Y_{\mu}(j)$.\\
-    Donc $Y_{\mu}^{-1} \circ g \circ Y_{\mu}(i) = j$
-    \[ p \circ q(Y_{\mu}(i)) = p (Y_{\mu}(i.x,(Y_{\mu}^{-1} \circ g \circ Y_{\mu}(i)).y)) = p (Y_{\mu}(i.x,j.y)) \]
-    \[Y_{\mu}((Y_{\mu}^{-1} \circ g \circ q^{-1} \circ Y_{\mu}(i.x,j.y)).x,j.y) = Y_{\mu}((Y_{\mu}^{-1} \circ g \circ Y_{\mu}(i)).x,j.y)\]
-    \[ Y_{\mu}(j.x,j.y) = Y_{\mu}(j)\]
-    Donc $p$ est bien définit, et $g \in P_{\mu} Q_{\mu}$
+    \leanok
+    Soit $m \in [0, n-1]$, on cherche a montré que $p_{\mu} \circ q_{\mu} (m) = g(m)$\\
+    Soit $i, j \in \mu$ tq $Y_{\mu}(i)=m$ et $Y_{\mu}(j) = g(Y_{\mu}(i))$\\
+    \[ q_{\mu}(Y_{\mu}(i)) = Y_{\mu}((Y_{\mu}^{-1}(Y_{\mu}(i))).x,(Y_{\mu}^{-1} \circ g(Y_{\mu}(i))).y) = Y_{\mu}(i.x, Y_{\mu}^{-1}(Y_{\mu}(j)).y) = Y_{\mu}(i.x, j.y) \]
+    On a donc
+    \[ p_{\mu} \circ q_{\mu}(Y_{\mu}(i)) = Y_{\mu}(Y_{\mu}^{-1}( g \circ q_{\mu}^{-1} \circ q_{\mu} \circ Y_{\mu}(i)).x, Y_{\mu}^{-1}(q_{\mu}(Y_{\mu}(i))).y ) \]
+    \[ Y_{\mu}(Y_{\mu}^{-1}( g \circ Y_{\mu}(i)).x, Y_{\mu}^{-1}(Y_{\mu}(i.x, j.y)).y ) = Y_{\mu}(Y_{\mu}^{-1}( Y_{\mu}(j)).x, j.y ) = Y_{\mu}(j.x, j.y) = Y_{\mu}(j) = g(Y_{\mu}(i)) \]
+\end{proof}
+
+\begin{lemma}[bijpu]
+    \label{bijpu}
+    \lean{bijpu}
+    \leanok
+    Soit g une permutation rowToCol, $p_{\mu}$ est une bijection
+\end{lemma}
+\begin{proof}
+    \uses{puqug}
+    \leanok
+    Par puqug, on a $p_{\mu} \circ q_{\mu} = g \Rightarrow p_{\mu} = g \circ q_{\mu}^{-1}$\\
+    Comme $g$ et $q_{\mu}^{-1}$ sont des bijections, $p_{\mu}$ en est une aussi.
+\end{proof}
+
+\begin{lemma}[puInPu]
+    \label{puInPu}
+    \lean{puPermInPu}
+    \leanok
+    \uses{bijpu}
+    \[ p_{\mu} \in P_{\mu} \]
+\end{lemma}
+\begin{proof}
+    \leanok
+    Par construction de $p_{\mu}$, la valeur en y ne change pas après l'application.
+\end{proof}
+
+\begin{lemma}[gInPuQu]
+    \label{gInPuQu}
+    \uses{PuQu}
+    \leanok
+    Soit g une permutation rowToCol
+    \[g \in P_{\mu}Q_{\mu}\]
+\end{lemma}
+\begin{proof}
+    \uses{puInPu, quInQu}
+    \leanok
+    Il s'agit d'une conséquence directe des lemmes: puqug, puInPu et quInQu
 \end{proof}
 
 \begin{definition}[IneqYoungDiagram]

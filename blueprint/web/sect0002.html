@@ -335,7 +335,7 @@
         </div>
   </div>
   <div class="definition_thmcontent">
-  <p>   \(P_{\mu }\) est un sous groupe de \(S_{n}\), défini de la façon suivante:<br />Un élément de \(P_{\mu }\) permute les entré du YoungDiagram si ils sont sur la même rangé. </p>
+  <p>   \(P_{\mu }\) est un sous groupe de \(S_{n}\), défini de la façon suivante:<br />Un élément de \(P_{\mu }\) permute les entré du YoungDiagram s’ils sont sur la même rangé. </p>
 
   </div>
 </div>
@@ -473,7 +473,7 @@
         </div>
   </div>
   <div class="definition_thmcontent">
-  <p>   \(Q_{\mu }\) est un sous groupe de \(S_{n}\), défini de la façon suivante:<br />Un élément de \(Q_{\mu }\) permute les entré du YoungDiagram si ils sont sur la même colonne. </p>
+  <p>   \(Q_{\mu }\) est un sous groupe de \(S_{n}\), défini de la façon suivante:<br />Un élément de \(Q_{\mu }\) permute les entré du YoungDiagram s’ils sont sur la même colonne. </p>
 
   </div>
 </div>
@@ -715,13 +715,13 @@
 
   </div>
 </div>
-<div class="definition_thmwrapper theorem-style-definition" id="Gu">
+<div class="definition_thmwrapper theorem-style-definition" id="rowToCol">
   <div class="definition_thmheading">
     <span class="definition_thmcaption">
     Definition
     </span>
     <span class="definition_thmlabel">13</span>
-    <span class="definition_thmtitle">Gu</span>
+    <span class="definition_thmtitle">rowToCol</span>
     <div class="thm_header_extras">
 
     
@@ -729,7 +729,7 @@
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0002.html#Gu">#</a>
+    <a class="icon proof" href="sect0002.html#rowToCol">#</a>
     
     
     <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
@@ -764,7 +764,7 @@
         
         <ul class="uses">
           
-          <li><a href="https://AlexandreCharland.github.io/BlueprintRep/docs/find/#doc/Gu" class="lean_decl">Gu</a></li>
+          <li><a href="https://AlexandreCharland.github.io/BlueprintRep/docs/find/#doc/rowToCol" class="lean_decl">rowToCol</a></li>
           
         </ul>
     
@@ -775,9 +775,9 @@
         </div>
   </div>
   <div class="definition_thmcontent">
-  <p>    \(G_{\mu }\) est une permutation de [0, n-1] tq </p>
+  <p>    Soit \(g\) est une permutation de [0, n-1]. Elle est rowToCol si </p>
 <div class="displaymath" id="a0000000020">
-  \[  \forall i,j,k,l \in \mu , ((i \neq j) \land (G_{\mu } \circ Y_{\mu } (i) = Y_{\mu } (k)) \land (G_{\mu } \circ Y_{\mu } (j) = Y_{\mu } (l))) → ((i.x \neq j.x) \lor (k.y \neq l.y))  \]
+  \[  \forall i,j,k,l \in \mu , ((i \neq j) \land (g \circ Y_{\mu } (i) = Y_{\mu } (k)) \land (g \circ Y_{\mu } (j) = Y_{\mu } (l))) → ((i.x \neq j.x) \lor (k.y \neq l.y))  \]
 </div>
 
   </div>
@@ -878,8 +878,6 @@
         
         <ul class="uses">
           
-          <li><a href="sect0002.html#Gu">Definition 13</a></li>
-          
           <li><a href="sect0002.html#YuInv">Definition 14</a></li>
           
         </ul>
@@ -911,9 +909,9 @@
         </div>
   </div>
   <div class="lemma_thmcontent">
-  
+  <p>    Soit g une permutation rowToCol, </p>
 <div class="displaymath" id="a0000000022">
-  \[  \forall m \in [0,n-1], (Y_{\mu }^{-1}(m).x,Y_{\mu }^{-1}(G_{\mu }(m)).y) \in \mu  \]
+  \[  \forall m \in [0,n-1], (Y_{\mu }^{-1}(m).x,Y_{\mu }^{-1}(g(m)).y) \in \mu  \]
 </div>
 
   </div>
@@ -993,9 +991,9 @@
         </div>
   </div>
   <div class="definition_thmcontent">
-  <p>    \(q_{\mu }\) est une permutation de [0, n-1] défini comme </p>
+  <p>    Soit g une permutation rowToCol,<br />\(q_{\mu }\) est une permutation de [0, n-1] défini comme </p>
 <div class="displaymath" id="a0000000024">
-  \[  q_{\mu }(m)= Y_{\mu }((Y_{\mu }^{-1}(m)).x,(Y_{\mu }^{-1} \circ G_{\mu }(m)).y)  \]
+  \[  q_{\mu }(m)= Y_{\mu }((Y_{\mu }^{-1}(m)).x,(Y_{\mu }^{-1} \circ g(m)).y)  \]
 </div>
 
   </div>
@@ -1008,7 +1006,102 @@
     <span class="expand-proof">▶</span>
   </div>
   <div class="proof_content">
-  <p>Par le lemme staysInY, on sait que la fonction \(q_{\mu }\) est bien défini.<br />Il ne reste plus qu’a montré que \(q_{\mu }\) est une bijection.<br />TODO </p>
+  <p>Par le lemme staysInY, on sait que la fonction \(q_{\mu }\) est bien défini.<br />Il ne reste plus qu’a montré que \(q_{\mu }\) est une bijection.<br />Comme le domaine et codomaine sont de même taille, il suffit de montrer que \(q_{\mu }\) est injectif.<br />Supposons le contraire, \(\exists m, m' \in [0,n-1]\) tq \(q_{\mu }(m) = q_{\mu }(m') \land m \neq m'\).<br />\(\exists i, j \in \mu \), tq \(Y_{\mu }(i)=m\) et \(Y_{\mu }(j)=m'\).<br />Comme \(Y_{\mu }\) est injective, on a que \(i \neq j\).<br />\(\exists k, l \in \mu \), tq \(Y_{\mu }(k)=g(Y_{\mu }(i))\) et \(Y_{\mu }(l)=g(Y_{\mu }(j))\).<br /></p>
+<div class="displaymath" id="a0000000025">
+  \[  q_{\mu }(Y_{\mu }(i)) = q_{\mu }(Y_{\mu }(j)) \Rightarrow  \]
+</div>
+<div class="displaymath" id="a0000000026">
+  \[  Y_{\mu }((Y_{\mu }^{-1}(Y_{\mu }(i))).x,(Y_{\mu }^{-1} \circ g(Y_{\mu }(i))).y) = Y_{\mu }((Y_{\mu }^{-1}(Y_{\mu }(j))).x,(Y_{\mu }^{-1} \circ g(Y_{\mu }(j))).y)  \]
+</div>
+<div class="displaymath" id="a0000000027">
+  \[  i.x = j.x \land Y_{\mu }^{-1} \circ g(Y_{\mu }(i)).y = Y_{\mu }^{-1} \circ g(Y_{\mu }(j)).y \Rightarrow Y_{\mu }^{-1} \circ Y_{\mu }(k).y = Y_{\mu }^{-1} \circ Y_{\mu }(l).y  \]
+</div>
+<div class="displaymath" id="a0000000028">
+  \[  i.x = j.x \land k.y = l.y  \]
+</div>
+<p> Donc comme \(g\) est rowToCol \(i \neq j \land Y_{\mu }(k)=g(Y_{\mu }(i)) \land Y_{\mu }(l)=g(Y_{\mu }(j))\) on a que \(i.x \neq j.x \lor k.y \neq l.y\).<br />Contradiction, donc \(q_{\mu }\) est injectif et donc bijectif. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="quInQu">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">17</span>
+    <span class="lemma_thmtitle">quInQu</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#quInQu">#</a>
+    
+    <a class="icon proof" href="sect0002.html#a0000000029"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#qu">Definition 16</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://AlexandreCharland.github.io/BlueprintRep/docs/find/#doc/quPermInQu" class="lean_decl">quPermInQu</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  
+<div class="displaymath" id="a0000000030">
+  \[  q_{\mu } \in Q_{\mu }  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000029">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Par construction de \(q_{\mu }\), la valeur en x ne change pas après l’application. </p>
 
   </div>
 </div>
@@ -1017,7 +1110,7 @@
     <span class="definition_thmcaption">
     Definition
     </span>
-    <span class="definition_thmlabel">17</span>
+    <span class="definition_thmlabel">18</span>
     <span class="definition_thmtitle">quInv</span>
     <div class="thm_header_extras">
 
@@ -1081,7 +1174,7 @@
     <span class="lemma_thmcaption">
     Lemma
     </span>
-    <span class="lemma_thmlabel">18</span>
+    <span class="lemma_thmlabel">19</span>
     <span class="lemma_thmtitle">staysInX</span>
     <div class="thm_header_extras">
 
@@ -1090,7 +1183,7 @@
 
     <a class="icon proof" href="sect0002.html#staysInX">#</a>
     
-    <a class="icon proof" href="sect0002.html#a0000000025"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0002.html#a0000000031"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -1106,7 +1199,7 @@
         
         <ul class="uses">
           
-          <li><a href="sect0002.html#quInv">Definition 17</a></li>
+          <li><a href="sect0002.html#quInv">Definition 18</a></li>
           
         </ul>
     
@@ -1115,17 +1208,36 @@
 
     
     
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://AlexandreCharland.github.io/BlueprintRep/docs/find/#doc/staysInX" class="lean_decl">staysInX</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
         </div>
   </div>
   <div class="lemma_thmcontent">
-  
-<div class="displaymath" id="a0000000026">
-  \[  \forall m \in [0,n-1], ((Y_{\mu }^{-1} \circ G_{\mu } \circ q_{\mu }^{-1}(m)).x, (Y_{\mu }^{-1}(m)).y) \in \mu  \]
+  <p>    Soit g une permutation rowToCol, </p>
+<div class="displaymath" id="a0000000032">
+  \[  \forall m \in [0,n-1], ((Y_{\mu }^{-1} \circ g \circ q_{\mu }^{-1}(m)).x, (Y_{\mu }^{-1}(m)).y) \in \mu  \]
 </div>
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000025">
+<div class="proof_wrapper" id="a0000000031">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -1142,16 +1254,18 @@
     <span class="definition_thmcaption">
     Definition
     </span>
-    <span class="definition_thmlabel">19</span>
+    <span class="definition_thmlabel">20</span>
     <span class="definition_thmtitle">pu</span>
     <div class="thm_header_extras">
 
+    
+    ✓
         </div>
     <div class="thm_header_hidden_extras">
 
     <a class="icon proof" href="sect0002.html#pu">#</a>
     
-    <a class="icon proof" href="sect0002.html#a0000000027"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0002.html#a0000000033"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -1167,7 +1281,7 @@
         
         <ul class="uses">
           
-          <li><a href="sect0002.html#staysInX">Lemma 18</a></li>
+          <li><a href="sect0002.html#staysInX">Lemma 19</a></li>
           
         </ul>
     
@@ -1176,17 +1290,36 @@
 
     
     
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://AlexandreCharland.github.io/BlueprintRep/docs/find/#doc/pu" class="lean_decl">pu</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
         </div>
   </div>
   <div class="definition_thmcontent">
-  <p>   \(p_{\mu }\) est une permutation de [0,n-1] défini comme </p>
-<div class="displaymath" id="a0000000028">
-  \[  q_{\mu }(m)= Y_{\mu }(Y_{\mu }^{-1}(m).x,Y_{\mu }^{-1}(G_{\mu }(m)).y)  \]
+  <p>    Soit g une permutation rowToCol,<br />\(p_{\mu }\) est une permutation de [0, n-1] défini comme </p>
+<div class="displaymath" id="a0000000034">
+  \[  p_{\mu }(m)= Y_{\mu }((Y_{\mu }^{-1} \circ g \circ q^{-1}(m)).x,(Y_{\mu }^{-1}(m)).y)  \]
 </div>
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000027">
+<div class="proof_wrapper" id="a0000000033">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -1194,25 +1327,260 @@
     <span class="expand-proof">▶</span>
   </div>
   <div class="proof_content">
-  <p>TODO </p>
+  <p>La preuve de la bijection requiert un lemme avant </p>
 
   </div>
 </div>
-<div class="lemma_thmwrapper theorem-style-plain" id="No2FromSameColToSameRow">
+<div class="lemma_thmwrapper theorem-style-plain" id="puqug">
   <div class="lemma_thmheading">
     <span class="lemma_thmcaption">
     Lemma
     </span>
-    <span class="lemma_thmlabel">20</span>
-    <span class="lemma_thmtitle">No2FromSameColToSameRow</span>
+    <span class="lemma_thmlabel">21</span>
+    <span class="lemma_thmtitle">puqug</span>
     <div class="thm_header_extras">
 
+    
+    ✓
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0002.html#No2FromSameColToSameRow">#</a>
+    <a class="icon proof" href="sect0002.html#puqug">#</a>
     
-    <a class="icon proof" href="sect0002.html#a0000000029"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0002.html#a0000000035"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#pu">Definition 20</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://AlexandreCharland.github.io/BlueprintRep/docs/find/#doc/puqug" class="lean_decl">puqug</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>    Soit g une permutation rowToCol,<br /></p>
+<div class="displaymath" id="a0000000036">
+  \[  g = p_{\mu } \circ q_{\mu }  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000035">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Soit \(m \in [0, n-1]\), on cherche a montré que \(p_{\mu } \circ q_{\mu } (m) = g(m)\)<br />Soit \(i, j \in \mu \) tq \(Y_{\mu }(i)=m\) et \(Y_{\mu }(j) = g(Y_{\mu }(i))\)<br /></p>
+<div class="displaymath" id="a0000000037">
+  \[  q_{\mu }(Y_{\mu }(i)) = Y_{\mu }((Y_{\mu }^{-1}(Y_{\mu }(i))).x,(Y_{\mu }^{-1} \circ g(Y_{\mu }(i))).y) = Y_{\mu }(i.x, Y_{\mu }^{-1}(Y_{\mu }(j)).y) = Y_{\mu }(i.x, j.y)  \]
+</div>
+<p> On a donc </p>
+<div class="displaymath" id="a0000000038">
+  \[  p_{\mu } \circ q_{\mu }(Y_{\mu }(i)) = Y_{\mu }(Y_{\mu }^{-1}( g \circ q_{\mu }^{-1} \circ q_{\mu } \circ Y_{\mu }(i)).x, Y_{\mu }^{-1}(q_{\mu }(Y_{\mu }(i))).y )  \]
+</div>
+<div class="displaymath" id="a0000000039">
+  \[  Y_{\mu }(Y_{\mu }^{-1}( g \circ Y_{\mu }(i)).x, Y_{\mu }^{-1}(Y_{\mu }(i.x, j.y)).y ) = Y_{\mu }(Y_{\mu }^{-1}( Y_{\mu }(j)).x, j.y ) = Y_{\mu }(j.x, j.y) = Y_{\mu }(j) = g(Y_{\mu }(i))  \]
+</div>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="bijpu">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">22</span>
+    <span class="lemma_thmtitle">bijpu</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#bijpu">#</a>
+    
+    <a class="icon proof" href="sect0002.html#a0000000040"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://AlexandreCharland.github.io/BlueprintRep/docs/find/#doc/bijpu" class="lean_decl">bijpu</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   Soit g une permutation rowToCol, \(p_{\mu }\) est une bijection </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000040">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> Par puqug, on a \(p_{\mu } \circ q_{\mu } = g \Rightarrow p_{\mu } = g \circ q_{\mu }^{-1}\)<br />Comme \(g\) et \(q_{\mu }^{-1}\) sont des bijections, \(p_{\mu }\) en est une aussi. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="puInPu">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">23</span>
+    <span class="lemma_thmtitle">puInPu</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#puInPu">#</a>
+    
+    <a class="icon proof" href="sect0002.html#a0000000041"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#bijpu">Lemma 22</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://AlexandreCharland.github.io/BlueprintRep/docs/find/#doc/puPermInPu" class="lean_decl">puPermInPu</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  
+<div class="displaymath" id="a0000000042">
+  \[  p_{\mu } \in P_{\mu }  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000041">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Par construction de \(p_{\mu }\), la valeur en y ne change pas après l’application. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="gInPuQu">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">24</span>
+    <span class="lemma_thmtitle">gInPuQu</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#gInPuQu">#</a>
+    
+    <a class="icon proof" href="sect0002.html#a0000000043"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
@@ -1230,7 +1598,9 @@
           
           <li><a href="sect0002.html#PuQu">Definition 12</a></li>
           
-          <li><a href="sect0002.html#pu">Definition 19</a></li>
+          <li><a href="sect0002.html#puInPu">Lemma 23</a></li>
+          
+          <li><a href="sect0002.html#quInQu">Lemma 17</a></li>
           
         </ul>
     
@@ -1242,11 +1612,14 @@
         </div>
   </div>
   <div class="lemma_thmcontent">
-  <p>   Soit \(g : [0,n-1] \to [0,n-1]\) une fonction bijective et \(Y_{\mu }\) un YoungTableau.<br />Si \(\forall i, j, k, l \in \mu , i \neq j, g(Y_{\mu }(i)) = Y_{\mu }(k), g(Y_{\mu }(j)) = Y_{\mu }(l)\) alors \(i.x \neq j.x \lor k.y \neq l.y\).<br />Alors \(g \in P_{\mu }Q_{\mu }\) </p>
+  <p>   Soit g une permutation rowToCol </p>
+<div class="displaymath" id="a0000000044">
+  \[ g \in P_{\mu }Q_{\mu } \]
+</div>
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000029">
+<div class="proof_wrapper" id="a0000000043">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -1254,17 +1627,7 @@
     <span class="expand-proof">▶</span>
   </div>
   <div class="proof_content">
-  <p> Posons \(q(Y_{\mu }(i)) := Y_{\mu }(i.x,(Y_{\mu }^{-1} \circ g \circ Y_{\mu }(i)).y)\).<br />Par le lemme qWellDefined, nous avons que q est bien définit.<br />Montrons que \(q \in Q_{\mu }\)<br />Si q n’est pas injectif alors \(\exists k, l \in \mu \) tq \(k \neq l, q(Y_{\mu }(k))=q(Y_{\mu }(l))\).<br />Donc \(Y_{\mu }((Y_{\mu }^{-1} \circ g \circ Y_{\mu }(k)).x,k.y) = Y_{\mu }((Y_{\mu }^{-1} \circ g \circ Y_{\mu }(l)).x,l.y)\).<br />Comme \(Y_{\mu }^{-1} \circ g \circ Y_{\mu }\) est bijectif, \(\exists ! i,j \in \mu \) tq \(i \neq j, Y_{\mu }^{-1} \circ g Y_{\mu }(k)=i, Y_{\mu }^{-1} \circ g Y_{\mu }(l)=j\).<br />Donc \(\exists i, j, k, l \in \mu , i \neq j, g(Y_{\mu }(i)) = Y_{\mu }(k), g(Y_{\mu }(j)) = Y_{\mu }(l)\) et \(i.x = j.x \land k.y = l.y\).<br />Contradiction d’hypothèse.<br />Donc \(q\) est injectif. De plus comme le domaine et codomaine sont finis et de même taille, on a que \(q\) est une bijection. Ainsi \(q \in Q_{\mu }\).<br /><br />Posons \(p(Y_{\mu }(i)) := Y_{\mu }((Y_{\mu }^{-1} \circ g \circ q^{-1} \circ Y_{\mu }(i)).x,i.y)\).<br />On remarque \(p \circ q = g\). Soit \(i \in \mu \). \(\exists j \in \mu \) tq \(g(Y_{\mu }(i))=Y_{\mu }(j)\).<br />Donc \(Y_{\mu }^{-1} \circ g \circ Y_{\mu }(i) = j\) </p>
-<div class="displaymath" id="a0000000030">
-  \[  p \circ q(Y_{\mu }(i)) = p (Y_{\mu }(i.x,(Y_{\mu }^{-1} \circ g \circ Y_{\mu }(i)).y)) = p (Y_{\mu }(i.x,j.y))  \]
-</div>
-<div class="displaymath" id="a0000000031">
-  \[ Y_{\mu }((Y_{\mu }^{-1} \circ g \circ q^{-1} \circ Y_{\mu }(i.x,j.y)).x,j.y) = Y_{\mu }((Y_{\mu }^{-1} \circ g \circ Y_{\mu }(i)).x,j.y) \]
-</div>
-<div class="displaymath" id="a0000000032">
-  \[  Y_{\mu }(j.x,j.y) = Y_{\mu }(j) \]
-</div>
-<p> Donc \(p\) est bien définit, et \(g \in P_{\mu } Q_{\mu }\) </p>
+  <p> Il s’agit d’une conséquence directe des lemmes: puqug, puInPu et quInQu </p>
 
   </div>
 </div>
@@ -1273,7 +1636,7 @@
     <span class="definition_thmcaption">
     Definition
     </span>
-    <span class="definition_thmlabel">21</span>
+    <span class="definition_thmlabel">25</span>
     <span class="definition_thmtitle">IneqYoungDiagram</span>
     <div class="thm_header_extras">
 

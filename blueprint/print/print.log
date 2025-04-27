@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.12.24)  15 APR 2025 17:59
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.12.24)  27 APR 2025 15:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -741,11 +741,32 @@ Underfull \hbox (badness 10000) in paragraph at lines 55--72
 [2
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 217--231
+
+LaTeX Warning: Reference `Gu' on page 3 undefined on input line 157.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 177--184
 
  []
 
-[3]) (./Part/SpechtModules.tex [4]
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 243--245
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 249--251
+
+ []
+
+
+Overfull \hbox (4.97462pt too wide) detected at line 254
+[][][][][][][] [] [][][][][][][][][] [][][][][][][][][][] [][][][][][][][] [] [
+][][][][][][][][][][][][][][] [][][][] [] [][][][][][][] [][][][] [] [][][][][]
+ [] [][][][][][][][]
+ []
+
+) (./Part/SpechtModules.tex [4]
 Chapter 3.
 
 Underfull \hbox (badness 10000) in paragraph at lines 5--7
@@ -783,13 +804,13 @@ Package rerunfilecheck Info: File `print.out' has not changed.
 (rerunfilecheck)             Checksum: 84D4EEC38642FB147F188AC4C2C08238;284.
  ) 
 Here is how much of TeX's memory you used:
- 16640 strings out of 476683
- 311348 string characters out of 5804046
+ 16645 strings out of 476683
+ 311372 string characters out of 5804046
  1867018 words of memory out of 5000000
- 36667 multiletter control sequences out of 15000+600000
+ 36672 multiletter control sequences out of 15000+600000
  517658 words of font info for 81 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 86i,9n,115p,332b,415s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 86i,9n,115p,332b,416s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on /Users/alexandrecharland/Desktop/Université/Session8/Projet/
 IFT3150/BlueprintRep/blueprint/print/print.pdf (7 pages).
