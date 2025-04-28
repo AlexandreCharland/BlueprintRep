@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.12.24)  27 APR 2025 15:11
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.12.24)  28 APR 2025 11:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -769,28 +769,23 @@ Overfull \hbox (4.97462pt too wide) detected at line 254
 ) (./Part/SpechtModules.tex [4]
 Chapter 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 5--7
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 35--39
+Underfull \hbox (badness 10000) in paragraph at lines 45--49
 
  []
 
 [5
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 64--66
+Underfull \hbox (badness 10000) in paragraph at lines 74--76
 
  []
 
 
-LaTeX Warning: Reference `CuPropIdempotent' on page 6 undefined on input line 9
-3.
+LaTeX Warning: Reference `CuPropIdempotent' on page 6 undefined on input line 1
+03.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 93--95
+Underfull \hbox (badness 10000) in paragraph at lines 103--105
 
  []
 
@@ -804,10 +799,10 @@ Package rerunfilecheck Info: File `print.out' has not changed.
 (rerunfilecheck)             Checksum: 84D4EEC38642FB147F188AC4C2C08238;284.
  ) 
 Here is how much of TeX's memory you used:
- 16645 strings out of 476683
- 311372 string characters out of 5804046
- 1867018 words of memory out of 5000000
- 36672 multiletter control sequences out of 15000+600000
+ 16646 strings out of 476683
+ 311363 string characters out of 5804046
+ 1868018 words of memory out of 5000000
+ 36673 multiletter control sequences out of 15000+600000
  517658 words of font info for 81 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  86i,9n,115p,332b,416s stack positions out of 10000i,1000n,20000p,200000b,200000s

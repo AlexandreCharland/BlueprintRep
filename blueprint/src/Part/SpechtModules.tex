@@ -1,17 +1,27 @@
 \chapter{SpechtModules}
 
-\begin{definition}[YoungProjectors]
-    \label{YoungProjectors}
-    \uses{Pu, Qu, PuCard, QuCard}
-    Un Young projector est défini par un YoungDiagram $\mu$\\
+\begin{definition}[au]
+    \label{au}
+    \leanok
+    \lean{au}
+    \uses{PuCard}
     \[ a_{\mu} := \frac{1}{|P_{\mu}|}\sum_{g \in P_{\mu}}g \]
+\end{definition}
+
+\begin{definition}[bu]
+    \label{bu}
+    \leanok
+    \lean{bu}
+    \uses{QuCard}
     \[ b_{\mu} := \frac{1}{|Q_{\mu}|}\sum_{g \in Q_{\mu}}(-1)^{g}g \]
     Où $(-1)^{g}$ est le signe de g
 \end{definition}
 
 \begin{definition}[YoungSymmetriser]
     \label{YoungSymmetriser}
-    \uses{YoungProjectors}
+    \leanok
+    \lean{cu}
+    \uses{au, bu}
     Un Young symmetriser est défini par un YoungDiagram $\mu$\\
     $c_{\mu} := a_{\mu} b_{\mu} $
 \end{definition}
