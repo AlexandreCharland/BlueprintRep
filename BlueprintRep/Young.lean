@@ -3,22 +3,26 @@ import Mathlib.GroupTheory.Perm.Basic --Utilisé pour le groupe de permutation
 import Mathlib.Algebra.Group.Subgroup.Defs --Utilisé pour les sous groupes
 import Mathlib.Data.ZMod.Basic --Utilisé pour définir la cardinalité
 
+/-! Définition d'un YoungTableau, qui n'est rien de plus qu'une fonction bijective -/
 structure YoungTableau (μ : YoungDiagram) where
   entry : μ.cells → (Fin μ.card)
   inj : ∀ {i j : μ.cells}, entry i = entry j → i = j
 
+/-! Démonstration que la fonction est injective -/
 lemma injYu {μ : YoungDiagram} (Yᵤ : YoungTableau μ) :
   Function.Injective Yᵤ.entry := by
   rw [Function.Injective]
   intros _ _ h
   exact Yᵤ.inj h
 
+/-! Démonstration que la fonction est bijective -/
 lemma bijYu {μ : YoungDiagram} (Yᵤ : YoungTableau μ) :
   Function.Bijective Yᵤ.entry := by
   rw[Fintype.bijective_iff_injective_and_card]
   simp
   exact injYu Yᵤ
 
+/-! Lemme pratique pour simplifier future démonstration -/
 lemma preImYu {μ : YoungDiagram} (Yᵤ : YoungTableau μ) (n : Fin μ.card) :
   ∃! (i : μ.cells), Yᵤ.entry i = n := by
   have h : ∀ (j' : Fin μ.card), ∃! i', Yᵤ.entry i' = j' := by
@@ -26,6 +30,7 @@ lemma preImYu {μ : YoungDiagram} (Yᵤ : YoungTableau μ) (n : Fin μ.card) :
     exact (bijYu Yᵤ)
   exact h n
 
+/-! Définition du sous-groupe des permutations qui permute que les rangés (Pᵤ) -/
 def Pu {μ : YoungDiagram} (Yᵤ : YoungTableau μ) : Subgroup (Equiv.Perm (Fin μ.card)) where
   carrier := {x : (Equiv.Perm (Fin μ.card)) | ∀ {i j : μ}, (x (Yᵤ.entry i) = Yᵤ.entry j) → i.val.snd = j.val.snd}
   mul_mem' := by
@@ -48,13 +53,16 @@ def Pu {μ : YoungDiagram} (Yᵤ : YoungTableau μ) : Subgroup (Equiv.Perm (Fin 
     rw[Eq.comm]
     exact h1 h2
 
+/-! Nécessaire pour utiliser la cardinalité -/
 noncomputable instance PuCardFinite {μ : YoungDiagram} (Yᵤ : YoungTableau μ) :
   Fintype ↥(Pu Yᵤ) := by
   exact Fintype.ofFinite ↥(Pu Yᵤ)
 
+/-! Cardinalité de Pᵤ -/
 noncomputable def PuCard {μ : YoungDiagram} (Yᵤ : YoungTableau μ) :=
   Fintype.card ↥(Pu Yᵤ)
 
+/-! Définition du sous-groupe des permutations qui permute que les colonnes (Qᵤ) -/
 def Qu {μ : YoungDiagram} (Yᵤ : YoungTableau μ) : Subgroup (Equiv.Perm (Fin μ.card)) where
   carrier := {x : (Equiv.Perm (Fin μ.card)) | ∀ {i j : μ}, (x (Yᵤ.entry i) = Yᵤ.entry j) → i.val.fst = j.val.fst}
   mul_mem' := by
@@ -77,13 +85,16 @@ def Qu {μ : YoungDiagram} (Yᵤ : YoungTableau μ) : Subgroup (Equiv.Perm (Fin 
     rw[Eq.comm]
     exact h1 h2
 
+/-! Nécessaire pour utiliser la cardinalité -/
 noncomputable instance QuCardFinite {μ : YoungDiagram} (Yᵤ : YoungTableau μ) :
   Fintype ↥(Qu Yᵤ) := by
   exact Fintype.ofFinite ↥(Qu Yᵤ)
 
+/-! Cardinalité de Qᵤ -/
 noncomputable def QuCard {μ : YoungDiagram} (Yᵤ : YoungTableau μ) :=
   Fintype.card ↥(Qu Yᵤ)
 
+/-! Démonstration que Pᵤ ∩ Qᵤ = {id} -/
 lemma sectPuQu {μ : YoungDiagram} (Yᵤ : YoungTableau μ):
   (Pu Yᵤ).carrier ∩ (Qu Yᵤ).carrier = {↑1} := by
   rw[Set.eq_singleton_iff_unique_mem, Set.mem_inter_iff]
@@ -105,31 +116,35 @@ lemma sectPuQu {μ : YoungDiagram} (Yᵤ : YoungTableau μ):
   rw[← h] at hk
   rw[Equiv.Perm.coe_one, id_eq, ← hj, hk]
 
+/-! Définission de l'ensemble PᵤQᵤ -/
 def PuQu {μ : YoungDiagram} (Yᵤ : YoungTableau μ) :=
   {g : (Equiv.Perm (Fin μ.card)) | ∃ p ∈ (Pu Yᵤ), ∃ q ∈ (Qu Yᵤ), g = p ∘ q}
 
+/-! Définission de la condition rowToCol.
+Une permutation est rowToCol si tout entré de la même colonne seront envoyés sur une différente rangé.
+L'identité à cette propriété. L'existence de d'autre permutation dépend du YoungDiagram. -/
 def rowToCol {μ : YoungDiagram} (Yᵤ : YoungTableau μ) (g : (Equiv.Perm (Fin μ.card))) :=
   ∀ {i j k l : μ}, ((i ≠ j) ∧ (g (Yᵤ.entry i) = (Yᵤ.entry k)) ∧ (g (Yᵤ.entry j) = (Yᵤ.entry l))) → ((i.val.fst ≠ j.val.fst) ∨ (k.val.snd ≠ l.val.snd))
 
+/-! je définis Yᵤ⁻¹ -/
 def YuInv {μ : YoungDiagram} (Yᵤ : YoungTableau μ) :=
   Fintype.bijInv (bijYu Yᵤ)
 
-lemma leftInv {α β : Type} [Fintype α] [Fintype β] [DecidableEq β] (f : α → β) (hf : Function.Bijective f) :
-  ∀ (i : α), ((Fintype.bijInv hf) ∘ f) i = i := by
-  sorry
-
+/-! Ajout de la propriété la plus importante de la fonction inverse. -/
 lemma YuInvYu {μ : YoungDiagram} {Yᵤ : YoungTableau μ} (i : μ) :
   (YuInv Yᵤ) (Yᵤ.entry i) = i := by
-  exact leftInv _ _ _
+  exact (Fintype.leftInverse_bijInv (bijYu Yᵤ)) i
 
+/-! Aucune idée pourquoi c'est vrai, autre que ça doit l'être sinon la preuve fonctionne pas. -/
 lemma staysInY {μ : YoungDiagram} {Yᵤ : YoungTableau μ} {g : (Equiv.Perm (Fin μ.card))} (rtc : rowToCol Yᵤ g) (n : Fin μ.card) :
   ((YuInv Yᵤ n).val.fst, ((YuInv Yᵤ) (g n)).val.snd) ∈ μ := by
-  --Aucune idée pourquoi c'est vrai, autre que ça doit l'être sinon la preuve fonctionne pas
-  sorry
+  sorry --TODO
 
+/-! Définition de la fonction qᵤ. À noter que la fonction dépend de Yᵤ et g une permutation rowToCol -/
 def qu {μ : YoungDiagram} {Yᵤ : YoungTableau μ} {g : (Equiv.Perm (Fin μ.card))} (rtc : rowToCol Yᵤ g) (n : Fin μ.card) :=
   Yᵤ.entry ⟨((YuInv Yᵤ n).val.fst, (YuInv Yᵤ (g n)).val.snd), staysInY rtc n⟩
 
+/-! Preuve que la fonction qᵤ est bijective -/
 lemma bijqu {μ : YoungDiagram} {Yᵤ : YoungTableau μ} {g : (Equiv.Perm (Fin μ.card))} (rtc : rowToCol Yᵤ g) :
   Function.Bijective (qu rtc) := by
   rw [Fintype.bijective_iff_injective_and_card, Function.Injective]
@@ -153,10 +168,14 @@ lemma bijqu {μ : YoungDiagram} {Yᵤ : YoungTableau μ} {g : (Equiv.Perm (Fin �
   simp only [ne_eq, not_true_eq_false, or_self] at k
   exact injYu Yᵤ
 
+/-! Pour une raison que j'ignore, une fonction bijective de A à A n'est pas la même chose qu'une bijection.
+Au lieu de recommencer et définir des permutations dès le début, j'ai décidé d'utiliser Equiv.ofBijective.
+Ça introduit une autre variable, mais c'est la meilleure solution que j'ai trouvé. -/
 noncomputable def quPerm {μ : YoungDiagram} {Yᵤ : YoungTableau μ} {g : (Equiv.Perm (Fin μ.card))} (rtc : rowToCol Yᵤ g) :
   (Equiv.Perm (Fin μ.card)) := by
   exact Equiv.ofBijective (qu rtc) (bijqu rtc)
 
+/-! Preuve que qᵤ ∈ Qᵤ -/
 lemma quPermInQu {μ : YoungDiagram} {Yᵤ : YoungTableau μ} {g : (Equiv.Perm (Fin μ.card))} (rtc : rowToCol Yᵤ g) :
   (quPerm rtc) ∈ (Qu Yᵤ) := by
   rw[quPerm, Qu]
@@ -167,21 +186,25 @@ lemma quPermInQu {μ : YoungDiagram} {Yᵤ : YoungTableau μ} {g : (Equiv.Perm (
   obtain ⟨h, _⟩ := h
   exact h
 
+/-! Définition de l'inverse -/
 def quInv {μ : YoungDiagram} {Yᵤ : YoungTableau μ} {g : (Equiv.Perm (Fin μ.card))} (rtc : rowToCol Yᵤ g) :=
   Fintype.bijInv (bijqu rtc)
 
+/-! Ajout de la propriété crutial d'une fonction inverse -/
 lemma quInvqu {μ : YoungDiagram} {Yᵤ : YoungTableau μ} {g : (Equiv.Perm (Fin μ.card))} (rtc : rowToCol Yᵤ g) (n : Fin μ.card) :
   (quInv rtc) ((qu rtc) n) = n := by
-  exact leftInv _ _ _
+  exact (Fintype.leftInverse_bijInv (bijqu rtc)) n
 
+/-! Aucune idée pourquoi c'est vrai, autre que ça doit l'être sinon la preuve fonctionne pas -/
 lemma staysInX {μ : YoungDiagram} {Yᵤ : YoungTableau μ} {g : (Equiv.Perm (Fin μ.card))} (rtc : rowToCol Yᵤ g) (n : Fin μ.card) :
   ((YuInv Yᵤ (g (quInv rtc n))).val.fst,(YuInv Yᵤ n).val.snd ) ∈ μ := by
-  --Aucune idée pourquoi c'est vrai, autre que ça doit l'être sinon la preuve fonctionne pas
-  sorry
+  sorry --TODO
 
+/-! Définition de pᵤ -/
 def pu {μ : YoungDiagram} {Yᵤ : YoungTableau μ} {g : (Equiv.Perm (Fin μ.card))} (rtc : rowToCol Yᵤ g) (n : Fin μ.card) :=
   Yᵤ.entry ⟨((YuInv Yᵤ (g (quInv rtc n))).val.fst,(YuInv Yᵤ n).val.snd ), staysInX rtc n⟩
 
+/-! Preuve que pᵤ ∘ qᵤ = g -/
 lemma puqug {μ : YoungDiagram} {Yᵤ : YoungTableau μ} {g : (Equiv.Perm (Fin μ.card))} (rtc : rowToCol Yᵤ g) :
   (pu rtc) ∘ (qu rtc) = g := by
   ext n
@@ -196,6 +219,7 @@ lemma puqug {μ : YoungDiagram} {Yᵤ : YoungTableau μ} {g : (Equiv.Perm (Fin �
   nth_rewrite 1 [quInvqu, hq] at hq'
   simp only[← hq', ← hj, YuInvYu]
 
+/-! Preuve que pᵤ est une bijection -/
 lemma bijpu {μ : YoungDiagram} {Yᵤ : YoungTableau μ} {g : (Equiv.Perm (Fin μ.card))} (rtc : rowToCol Yᵤ g) :
   Function.Bijective (pu rtc) := by
   have h : g ∘ (quInv rtc) = g ∘ (quInv rtc) := by rfl
@@ -214,10 +238,12 @@ lemma bijpu {μ : YoungDiagram} {Yᵤ : YoungTableau μ} {g : (Equiv.Perm (Fin �
   exact Equiv.bijective g
   exact (Fintype.bijective_bijInv (bijqu rtc))
 
+/-! Ajout du cast permutation à pᵤ -/
 noncomputable def puPerm {μ : YoungDiagram} {Yᵤ : YoungTableau μ} {g : (Equiv.Perm (Fin μ.card))} (rtc : rowToCol Yᵤ g) :
   (Equiv.Perm (Fin μ.card)) := by
   exact Equiv.ofBijective (pu rtc) (bijpu rtc)
 
+/-! Preuve que pᵤ ∈ Pᵤ -/
 lemma puPermInPu {μ : YoungDiagram} {Yᵤ : YoungTableau μ} {g : (Equiv.Perm (Fin μ.card))} (rtc : rowToCol Yᵤ g) :
   (puPerm rtc) ∈ (Pu Yᵤ) := by
   rw[puPerm, Pu]
@@ -228,6 +254,7 @@ lemma puPermInPu {μ : YoungDiagram} {Yᵤ : YoungTableau μ} {g : (Equiv.Perm (
   obtain ⟨_, h⟩ := h
   exact h
 
+/-! Le résultat important. Toute permutation avec la propriété rowToCol est dans PᵤQᵤ -/
 lemma gInPuQu {μ : YoungDiagram} {Yᵤ : YoungTableau μ} {g : (Equiv.Perm (Fin μ.card))} (rtc : rowToCol Yᵤ g) :
   g ∈ (PuQu Yᵤ) := by
   rw[PuQu, Set.mem_setOf_eq]

@@ -37,6 +37,7 @@
 
 \begin{lemma}[LinearTransformation]
     \label{LinearTransformation}
+    \leanok
     \uses{YoungSymmetriser}
     $\exists l_{\mu}$ une fonction linéaire tq\\
     $\forall x \in \mathbb{C}[S_{n}]$, $a_{\mu} x b_{\mu} = l_{\mu}(x) c_{\mu}$
@@ -77,17 +78,19 @@
 \end{lemma}
 \begin{proof}
     Comme $\mu > \lambda$\\
-    TODO montré que\\
-    Donc, il existe deux éléments de la même colomne que g envoit sur la même rangé\\
+    L'idée est que $\mu$ est plus "vertical" que $\lambda$. Il y aura donc au moins une case "vertival" qui sera envoyé vers une case plus "horizontal" dans $\lambda$. Finalement le principe du pigeonnier nous garantirait qu'il y deux case de la même colomne qui sera envoyé sur la même rangé.\\
+    \\
+    Donc, il existe deux éléments de la même colonne que g envoit sur la même rangé\\
     Ainsi un peut construire un t tq t $\in P_{\mu}$ et $g^{-1} t g \in Q_{\lambda}$.\\
     Par le même argument que le dernier lemme, $a_{\mu} \mathbb{C}[S_{n}] b_{\lambda} = 0$
 \end{proof}
 
 \begin{lemma}[CuPropIdempotent]
-    \label{CuIdempotent}
+    \label{CuPropIdempotent}
+    \leanok
     \uses{YoungSymmetriser}
     $c_{\mu}$ est proportionel à un idempotent. De façon mathématique
-    \[\exists a \in \mathbb{C}, c_{\mu}^{2} = a \cdot c_{\mu} \]
+    \[\exists c \in \mathbb{C}, c_{\mu}^{2} = c \cdot c_{\mu} \]
 \end{lemma}
 \begin{proof}
     \uses{LinearTransformation}
@@ -100,7 +103,7 @@
     $\forall \mu$ partition de n, $V_{\mu}$ est toute les représentations irréductibles de $S_n$
 \end{theorem}
 \begin{proof}
-    \uses{HomAeMisoeM, CuPropIdempotent, SmallerImpZero, CuIdempotent}
+    \uses{HomAeMisoeM, CuPropIdempotent, SmallerImpZero}
     Soit $\mu, \lambda$ deux partitions de n et sans perte de généralité, $\mu \geq \lambda$\\
     \[ \text{Hom}_{\mathbb{C}[S_{n}]}(V_{\mu}, V_{\lambda}) = \text{Hom}_{\mathbb{C}[S_{n}]}(\mathbb{C}[S_{n}]c_{\mu}, \mathbb{C}[S_{n}]c_{\lambda}) \cong c_{\mu}\mathbb{C}[S_{n}]c_{\lambda}  \]
     Si $\mu > \lambda$ alors $c_{\mu}\mathbb{C}[S_{n}]c_{\lambda} = 0$\\

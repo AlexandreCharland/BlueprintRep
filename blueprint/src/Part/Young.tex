@@ -154,7 +154,7 @@
     \label{staysInY}
     \lean{staysInY}
     \leanok
-    \uses{Gu, YuInv}
+    \uses{rowToCol, YuInv}
     Soit g une permutation rowToCol,
     \[ \forall m \in [0,n-1], (Y_{\mu}^{-1}(m).x,Y_{\mu}^{-1}(g(m)).y) \in \mu \]
 \end{lemma}
@@ -271,11 +271,11 @@
     \label{puInPu}
     \lean{puPermInPu}
     \leanok
-    \uses{bijpu}
     \[ p_{\mu} \in P_{\mu} \]
 \end{lemma}
 \begin{proof}
     \leanok
+    \uses{bijpu}
     Par construction de $p_{\mu}$, la valeur en y ne change pas après l'application.
 \end{proof}
 
