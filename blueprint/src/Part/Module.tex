@@ -1,7 +1,21 @@
 \chapter{Module}
 
+\begin{definition}[Ae]
+    \label{Ae}
+    \leanok
+    \lean{Ae}
+    Soit $A$ un anneau et $e \in A$
+    \[ Ae := \{a' \in A | \exists a \in A, a' = a \cdot e \} \]
+    $Ae$ est un A-module
+\end{definition}
+\begin{proof}
+    \leanok
+    On définit l'action à gauche comme la multiplication de A.
+\end{proof}
+
 \begin{lemma}[HomAeM]
     \label{HomAeM}
+    \uses{Ae}
     Soit A un anneau unitaire, M un A-module et e un idempotant de A.
     \[ \forall \phi \in \text{Hom}_{A}(Ae,M), \exists m \in e M, \phi(e)=m\]
 \end{lemma}
@@ -13,6 +27,7 @@
 
 \begin{lemma}[HomAeMisoeM]
     \label{HomAeMisoeM}
+    \uses{Ae}
     Soit A un anneau unitaire, M un A-module et e un idempotant de A.
     \[ \text{Hom}_{A}(A e,M) \cong e M\]
 \end{lemma}

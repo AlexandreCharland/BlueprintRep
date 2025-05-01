@@ -32,18 +32,6 @@
     La fonction doit être bijective
 \end{proof}
 
-\begin{lemma}[preImYu]
-    \label{preImYu}
-    \lean{preImYu}
-    \leanok
-    Tous nombre de 0 à n-1 possède une unique case associé dans $\mu$ par $Y_{\mu}$
-\end{lemma}
-\begin{proof}
-    \uses{bijYu}
-    \leanok
-    Trivial sachant que $Y_{\mu}$ est bijectif
-\end{proof}
-
 \begin{definition}[Pu]
     \label{Pu}
     \lean{Pu}
@@ -52,7 +40,7 @@
     Un élément de $P_{\mu}$ permute les entré du YoungDiagram s'ils sont sur la même rangé.
 \end{definition}
 \begin{proof}
-    \uses{injYu, preImYu}
+    \uses{bijYu}
     \leanok
     Il y a trois choses à vérifier.\\
     Le sous-groupe est fermé sous la composition de fonction\\
@@ -91,7 +79,7 @@
     Un élément de $Q_{\mu}$ permute les entré du YoungDiagram s'ils sont sur la même colonne.
 \end{definition}
 \begin{proof}
-    \uses{injYu, preImYu}
+    \uses{bijYu}
     \leanok
     La même preuve que Pu
 \end{proof}
@@ -218,8 +206,14 @@
     \[ \forall m \in [0,n-1], ((Y_{\mu}^{-1} \circ g \circ q_{\mu}^{-1}(m)).x, (Y_{\mu}^{-1}(m)).y) \in \mu \]
 \end{lemma}
 \begin{proof}
-    No idea...
-    TODO Figure it out
+    \leanok
+    Comme $q_{\mu}$ est une bijection, $\exists m' \in [0,n-1]$ tq $q_{\mu}(m')=m$\\
+    $\exists i, j \in \mu$ tq $Y_{\mu}(i) = m'$ et $g(Y_{\mu}(i)) = Y_{\mu}(j)$\\
+    \[ Y_{\mu}^{-1}(g(q_{\mu}^{-1}(m))).x = Y_{\mu}^{-1}(g(q_{\mu}^{-1}(q_{\mu}^{-1}(m')))).x = Y_{\mu}^{-1}(g(m')).x \]
+    \[ Y_{\mu}^{-1}(g(Y_{\mu}(i))).x = Y_{\mu}^{-1}(Y_{\mu}(j)).x = j.x \]
+    \[ Y_{\mu}^{-1}(m).y = Y_{\mu}^{-1}(q_{\mu}(m')).y = Y_{\mu}^{-1}(Y_{\mu}(Y_{\mu}^{-1}(m').x, Y_{\mu}^{-1}(g(m')).y)).y \]
+    \[ Y_{\mu}^{-1}(Y_{\mu}(Y_{\mu}^{-1}(Y_{\mu}(i)).x, Y_{\mu}^{-1}(Y_{\mu}(j)).y)).y = Y_{\mu}^{-1}(Y_{\mu}(i.x, j.y)).y = j.y \]
+    Donc $ ((Y_{\mu}^{-1} \circ g \circ q_{\mu}^{-1}(m)).x, (Y_{\mu}^{-1}(m)).y) = (j.x,j.y) = j \in \mu $
 \end{proof}
 
 \begin{definition}[pu]

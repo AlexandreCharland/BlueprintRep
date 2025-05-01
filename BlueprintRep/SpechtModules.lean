@@ -1,4 +1,5 @@
 import BlueprintRep.Young
+import BlueprintRep.Module
 import Mathlib.Algebra.MonoidAlgebra.Basic --Utilisé pour MonoidAlgebra
 import Mathlib.Data.Complex.Basic --Utilisé pour ℂ
 import Mathlib.GroupTheory.Perm.Sign --Utilisé pour sign

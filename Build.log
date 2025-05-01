@@ -1,5 +1,4 @@
-mkdir -p ~/Desktop/Université/Session8/Projet/IFT3150
-cd ~/Desktop/Université/Session8/Projet/IFT3150
+# File location IFT3150
 
 # create BlueprintRep repo in github
 # clone it
@@ -9,7 +8,6 @@ git clone git@github.com:AlexandreCharland/BlueprintRep.git
 python3.12 -m venv BlueprintRep
 . BlueprintRep/bin/activate
 pip install --upgrade pip
-
 
 # import graphviz librairy
 export GRAPHVIZ_DIR=$(brew --prefix graphviz)
@@ -26,37 +24,26 @@ cd BlueprintRep
 lake build
 
 # open VSCodium folder to
-~/Desktop/Université/Session8/Projet/IFT3150/BlueprintRep
+IFT3150/BlueprintRep
 
+#If the projet is already setup
+# File location IFT3150
+python3.12 -m venv BlueprintRep
+. BlueprintRep/bin/activate
+cd BlueprintRep
 
-brew install git-flow
-git flow init
+# This allows to use leanblueprint
+# Leanblueprint
 
-git flow feature start LeanBluePrint
-# fuck things up
-# if it works:
-git flow feature finish LeanBluePrint
+leanblueprint all
+# Update everything
 
-# merge le feature dans develop
-git checkout develop
-git merge feature/LeanBluePrint
-# do the first time
-git push --set-upstream origin develop
-# otherwise
-git push
+leanblueprint pdf
+# Generate only the pdf (useful for modifying a proof in the schema)
 
-# merge dans main
-git checkout main
-git merge develop
-git push
-
-
-# some work not documented...
-
-cd ~/Desktop/Université/Session8/Projet/IFT3150/BlueprintRep/blueprint
 leanblueprint serve
-
-# ouvrir la page web
+# Preview of the graph and proof document
+# Open this page on the web to see
 http://127.0.0.1:8000/
 
 

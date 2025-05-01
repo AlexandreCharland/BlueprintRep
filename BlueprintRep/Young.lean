@@ -12,7 +12,7 @@ structure YoungTableau (μ : YoungDiagram) where
 lemma injYu {μ : YoungDiagram} (Yᵤ : YoungTableau μ) :
   Function.Injective Yᵤ.entry := by
   rw [Function.Injective]
-  intros _ _ h
+  intros i j h
   exact Yᵤ.inj h
 
 /-! Démonstration que la fonction est bijective -/
@@ -38,17 +38,15 @@ def Pu {μ : YoungDiagram} (Yᵤ : YoungTableau μ) : Subgroup (Equiv.Perm (Fin 
     rw[Equiv.Perm.coe_mul, Function.comp_apply] at αβ
     obtain ⟨k, hk, _⟩ := preImYu Yᵤ (β (Yᵤ.entry i))
     rw[Eq.comm] at hk
-    have ik : i.val.snd = k.val.snd := by exact b hk
     rw[hk] at αβ
-    have jk : k.val.snd = j.val.snd := by exact a αβ
-    rw[ik,jk]
+    rw[b hk, a αβ]
   one_mem' := by
-    intros _ _ h
+    intros i j h
     rw[Equiv.Perm.coe_one, id_eq, Function.Injective.eq_iff] at h
     rw[h]
     exact injYu Yᵤ
   inv_mem' := by
-    intros _ h1 _ _ h2
+    intros f h1 i j h2
     rw[Eq.comm, Equiv.Perm.eq_inv_iff_eq] at h2
     rw[Eq.comm]
     exact h1 h2
@@ -70,17 +68,15 @@ def Qu {μ : YoungDiagram} (Yᵤ : YoungTableau μ) : Subgroup (Equiv.Perm (Fin 
     rw[Equiv.Perm.coe_mul, Function.comp_apply] at αβ
     obtain ⟨k, hk, _⟩ := preImYu Yᵤ (β (Yᵤ.entry i))
     rw[Eq.comm] at hk
-    have ik : i.val.fst = k.val.fst := by exact b hk
     rw[hk] at αβ
-    have jk : k.val.fst = j.val.fst := by exact a αβ
-    rw[ik,jk]
+    rw[b hk, a αβ]
   one_mem' := by
-    intros _ _ h
+    intros i j h
     rw[Equiv.Perm.coe_one, id_eq, Function.Injective.eq_iff] at h
     rw[h]
     exact injYu Yᵤ
   inv_mem' := by
-    intros _ h1 _ _ h2
+    intros f h1 i j h2
     rw[Eq.comm, Equiv.Perm.eq_inv_iff_eq] at h2
     rw[Eq.comm]
     exact h1 h2
@@ -126,16 +122,16 @@ L'identité à cette propriété. L'existence de d'autre permutation dépend du 
 def rowToCol {μ : YoungDiagram} (Yᵤ : YoungTableau μ) (g : (Equiv.Perm (Fin μ.card))) :=
   ∀ {i j k l : μ}, ((i ≠ j) ∧ (g (Yᵤ.entry i) = (Yᵤ.entry k)) ∧ (g (Yᵤ.entry j) = (Yᵤ.entry l))) → ((i.val.fst ≠ j.val.fst) ∨ (k.val.snd ≠ l.val.snd))
 
-/-! je définis Yᵤ⁻¹ -/
+/-! Définition de Yᵤ⁻¹ -/
 def YuInv {μ : YoungDiagram} (Yᵤ : YoungTableau μ) :=
   Fintype.bijInv (bijYu Yᵤ)
 
-/-! Ajout de la propriété la plus importante de la fonction inverse. -/
+/-! Lemme pratique pour simplifier future démonstration -/
 lemma YuInvYu {μ : YoungDiagram} {Yᵤ : YoungTableau μ} (i : μ) :
   (YuInv Yᵤ) (Yᵤ.entry i) = i := by
   exact (Fintype.leftInverse_bijInv (bijYu Yᵤ)) i
 
-/-! Aucune idée pourquoi c'est vrai, autre que ça doit l'être sinon la preuve fonctionne pas. -/
+/-! TODO -/
 lemma staysInY {μ : YoungDiagram} {Yᵤ : YoungTableau μ} {g : (Equiv.Perm (Fin μ.card))} (rtc : rowToCol Yᵤ g) (n : Fin μ.card) :
   ((YuInv Yᵤ n).val.fst, ((YuInv Yᵤ) (g n)).val.snd) ∈ μ := by
   sorry --TODO
@@ -147,13 +143,13 @@ def qu {μ : YoungDiagram} {Yᵤ : YoungTableau μ} {g : (Equiv.Perm (Fin μ.car
 /-! Preuve que la fonction qᵤ est bijective -/
 lemma bijqu {μ : YoungDiagram} {Yᵤ : YoungTableau μ} {g : (Equiv.Perm (Fin μ.card))} (rtc : rowToCol Yᵤ g) :
   Function.Bijective (qu rtc) := by
-  rw [Fintype.bijective_iff_injective_and_card, Function.Injective]
+  rw[Fintype.bijective_iff_injective_and_card, Function.Injective]
   by_contra contra
   simp only [not_forall, and_true] at contra
   obtain ⟨m, m', h, contra⟩:= contra
   obtain ⟨i, hi, _⟩:= preImYu Yᵤ m
   obtain ⟨j, hj, _⟩:= preImYu Yᵤ m'
-  rw [← hi, ← hj, Function.Injective.eq_iff, ← ne_eq] at contra
+  rw[← hi, ← hj, Function.Injective.eq_iff, ← ne_eq] at contra
   rw[qu, qu, Function.Injective.eq_iff (injYu Yᵤ), ← hi, ← hj] at h
   simp only [YuInvYu, YuInvYu, Subtype.mk.injEq, Prod.mk.injEq] at h
   obtain ⟨hx, hy⟩:=h
@@ -180,7 +176,7 @@ lemma quPermInQu {μ : YoungDiagram} {Yᵤ : YoungTableau μ} {g : (Equiv.Perm (
   (quPerm rtc) ∈ (Qu Yᵤ) := by
   rw[quPerm, Qu]
   simp only [Subtype.forall, Prod.forall, Subgroup.mem_mk, Set.mem_setOf_eq, Equiv.ofBijective_apply]
-  intros _ _ _ _ _ _ h
+  intros ix iy _ jx jy _ h
   rw[qu, Function.Injective.eq_iff (injYu Yᵤ)] at h
   simp only [YuInvYu, Subtype.mk.injEq, Prod.mk.injEq] at h
   obtain ⟨h, _⟩ := h
@@ -190,15 +186,24 @@ lemma quPermInQu {μ : YoungDiagram} {Yᵤ : YoungTableau μ} {g : (Equiv.Perm (
 def quInv {μ : YoungDiagram} {Yᵤ : YoungTableau μ} {g : (Equiv.Perm (Fin μ.card))} (rtc : rowToCol Yᵤ g) :=
   Fintype.bijInv (bijqu rtc)
 
-/-! Ajout de la propriété crutial d'une fonction inverse -/
+/-! Lemme pratique pour simplifier future démonstration -/
 lemma quInvqu {μ : YoungDiagram} {Yᵤ : YoungTableau μ} {g : (Equiv.Perm (Fin μ.card))} (rtc : rowToCol Yᵤ g) (n : Fin μ.card) :
   (quInv rtc) ((qu rtc) n) = n := by
   exact (Fintype.leftInverse_bijInv (bijqu rtc)) n
 
-/-! Aucune idée pourquoi c'est vrai, autre que ça doit l'être sinon la preuve fonctionne pas -/
+/-! Preuve que la fonction pᵤ (qui sera définit après) est bien définit -/
 lemma staysInX {μ : YoungDiagram} {Yᵤ : YoungTableau μ} {g : (Equiv.Perm (Fin μ.card))} (rtc : rowToCol Yᵤ g) (n : Fin μ.card) :
   ((YuInv Yᵤ (g (quInv rtc n))).val.fst,(YuInv Yᵤ n).val.snd ) ∈ μ := by
-  sorry --TODO
+  have h : ∀ (n' : Fin μ.card), ∃! m', (qu rtc) m' = n' := by
+    rw[← Function.bijective_iff_existsUnique _]
+    exact (bijqu rtc)
+  obtain ⟨m, hm, _⟩ := h n
+  obtain ⟨i, hi, _⟩ := preImYu Yᵤ m
+  obtain ⟨j, hj, _⟩ := preImYu Yᵤ (g (Yᵤ.entry i))
+  rw[← hm, ← hi]
+  simp only [quInvqu]
+  rw[← hj, qu]
+  simp only [YuInvYu, ← hj, Prod.mk.eta, SetLike.coe_mem]
 
 /-! Définition de pᵤ -/
 def pu {μ : YoungDiagram} {Yᵤ : YoungTableau μ} {g : (Equiv.Perm (Fin μ.card))} (rtc : rowToCol Yᵤ g) (n : Fin μ.card) :=
@@ -234,9 +239,7 @@ lemma bijpu {μ : YoungDiagram} {Yᵤ : YoungTableau μ} {g : (Equiv.Perm (Fin �
     exact (Fintype.bijective_bijInv (bijqu rtc)).injective
   rw[h', Function.comp_id] at h
   rw[h, quInv]
-  refine Function.Bijective.comp ?_ ?_
-  exact Equiv.bijective g
-  exact (Fintype.bijective_bijInv (bijqu rtc))
+  exact Function.Bijective.comp (Equiv.bijective g) (Fintype.bijective_bijInv (bijqu rtc))
 
 /-! Ajout du cast permutation à pᵤ -/
 noncomputable def puPerm {μ : YoungDiagram} {Yᵤ : YoungTableau μ} {g : (Equiv.Perm (Fin μ.card))} (rtc : rowToCol Yᵤ g) :
@@ -248,7 +251,7 @@ lemma puPermInPu {μ : YoungDiagram} {Yᵤ : YoungTableau μ} {g : (Equiv.Perm (
   (puPerm rtc) ∈ (Pu Yᵤ) := by
   rw[puPerm, Pu]
   simp only [Subtype.forall, Prod.forall, Subgroup.mem_mk, Set.mem_setOf_eq, Equiv.ofBijective_apply]
-  intros _ _ _ _ _ _ h
+  intros ix iy _ jx jy _ h
   rw[pu, Function.Injective.eq_iff (injYu Yᵤ)] at h
   simp only [YuInvYu, Subtype.mk.injEq, Prod.mk.injEq] at h
   obtain ⟨_, h⟩ := h

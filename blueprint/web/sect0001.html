@@ -51,32 +51,54 @@
 
 <div class="main-text">
 <h1 id="a0000000002">1 Module</h1>
-<div class="lemma_thmwrapper theorem-style-plain" id="HomAeM">
-  <div class="lemma_thmheading">
-    <span class="lemma_thmcaption">
-    Lemma
+<div class="definition_thmwrapper theorem-style-definition" id="Ae">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
     </span>
-    <span class="lemma_thmlabel">1</span>
-    <span class="lemma_thmtitle">HomAeM</span>
+    <span class="definition_thmlabel">1</span>
+    <span class="definition_thmtitle">Ae</span>
     <div class="thm_header_extras">
 
+    
+    ✓
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0001.html#HomAeM">#</a>
+    <a class="icon proof" href="sect0001.html#Ae">#</a>
     
     <a class="icon proof" href="sect0001.html#a0000000005"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
     
     
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://AlexandreCharland.github.io/BlueprintRep/docs/find/#doc/Ae" class="lean_decl">Ae</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
         </div>
   </div>
-  <div class="lemma_thmcontent">
-  <p>  Soit A un anneau unitaire, M un A-module et e un idempotant de A. </p>
+  <div class="definition_thmcontent">
+  <p>   Soit \(A\) un anneau et \(e \in A\) </p>
 <div class="displaymath" id="a0000000006">
-  \[  \forall \phi \in \text{Hom}_{A}(Ae,M), \exists m \in e M, \phi (e)=m \]
+  \[  Ae := \{ a' \in A | \exists a \in A, a' = a \cdot e \}   \]
 </div>
+<p> \(Ae\) est un A-module </p>
 
   </div>
 </div>
@@ -88,8 +110,69 @@
     <span class="expand-proof">▶</span>
   </div>
   <div class="proof_content">
+  <p>On définit l’action à gauche comme la multiplication de A. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="HomAeM">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">2</span>
+    <span class="lemma_thmtitle">HomAeM</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#HomAeM">#</a>
+    
+    <a class="icon proof" href="sect0001.html#a0000000007"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#Ae">Definition 1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   Soit A un anneau unitaire, M un A-module et e un idempotant de A. </p>
+<div class="displaymath" id="a0000000008">
+  \[  \forall \phi \in \text{Hom}_{A}(Ae,M), \exists m \in e M, \phi (e)=m \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000007">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
   <p>Soit \( n \in M\) tq \(\phi (e)=n\) </p>
-<div class="displaymath" id="a0000000007">
+<div class="displaymath" id="a0000000009">
   \[  \phi (e) = n \Rightarrow e \phi (e) = \phi (e) = e n \Rightarrow n = e n  \]
 </div>
 <p> Donc \( n \in e M\) </p>
@@ -101,7 +184,7 @@
     <span class="lemma_thmcaption">
     Lemma
     </span>
-    <span class="lemma_thmlabel">2</span>
+    <span class="lemma_thmlabel">3</span>
     <span class="lemma_thmtitle">HomAeMisoeM</span>
     <div class="thm_header_extras">
 
@@ -110,22 +193,44 @@
 
     <a class="icon proof" href="sect0001.html#HomAeMisoeM">#</a>
     
-    <a class="icon proof" href="sect0001.html#a0000000008"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+    <a class="icon proof" href="sect0001.html#a0000000010"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
 </a>
     
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#Ae">Definition 1</a></li>
+          
+          <li><a href="sect0001.html#HomAeM">Lemma 2</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
     
     
         </div>
   </div>
   <div class="lemma_thmcontent">
-  <p>  Soit A un anneau unitaire, M un A-module et e un idempotant de A. </p>
-<div class="displaymath" id="a0000000009">
+  <p>   Soit A un anneau unitaire, M un A-module et e un idempotant de A. </p>
+<div class="displaymath" id="a0000000011">
   \[  \text{Hom}_{A}(A e,M) \cong e M \]
 </div>
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000008">
+<div class="proof_wrapper" id="a0000000010">
   <div class="proof_heading">
     <span class="proof_caption">
     Proof
@@ -134,11 +239,11 @@
   </div>
   <div class="proof_content">
   <p> Soit \(\phi : \text{Hom}_{A}(A e,M) \to M\) tq \(\phi (\psi ) = \psi (e)\)<br />Il faut mq \(\phi \) est un homomorphisme.<br />Soit \(\psi , \sigma \in \text{Hom}_{A}(A e,M)\).<br /></p>
-<div class="displaymath" id="a0000000010">
+<div class="displaymath" id="a0000000012">
   \[  \phi (\psi + \sigma ) = (\psi + \sigma )(e) = \psi (e) + \sigma (e) = \phi (\psi ) + \phi (\sigma )  \]
 </div>
 <p> Soit \(a \in A\) </p>
-<div class="displaymath" id="a0000000011">
+<div class="displaymath" id="a0000000013">
   \[  a \cdot \phi (\psi ) = a \cdot \psi (e) = \phi (a \cdot \psi )  \]
 </div>
 <p> Comme \(\text{Hom}_{A}(A e,M)\) est un module, par le premier théorème d’isomorphisme, <br />\(\frac{\text{Hom}_{A}(A e,M)}{\text{ker}(\phi )} \cong \text{Im}(\phi )\)<br />Le noyau de \(\phi \) est trivial, car un unique homomorphisme peut être défini tq \(\sigma (e) = 0\), car tous éléments du domaine sont de la forme ae.<br />Il ne reste plus qu’a montré que l’image est eM.<br />Par le lemme HomAeM, on a que \(\text{Im}(\phi ) \subset e M\).<br />Soit \(m \in e M\). Considérons \(\psi (e)=m\) tq \(\psi (ae) = am\).<br />Il s’agit d’un homomorphisme de \(A e \to M\).<br />Donc \(\text{Im}(\phi ) = e M\) </p>
